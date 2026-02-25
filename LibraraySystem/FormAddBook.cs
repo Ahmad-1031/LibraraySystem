@@ -56,11 +56,24 @@ namespace LibraraySystem
 
         private void FormAddBook_Load(object sender, EventArgs e)
         {
+            TBoxBookID.Text = Book.GetNextBookID().ToString("0000");
+
+            CBgenre.Items.Clear();
+
+            DataSet ds = Genres.getGenres();
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++) {
+                CBgenre.Items.Add(ds.Tables[0].Rows[i][0] + " - " + ds.Tables[0].Rows[i][1]);
+                
+            }
+
+
 
         }
 
         private void AddBookBT_Click(object sender, EventArgs e)
         {
+            
             string title = TboxBookTitle.Text;
             string author = TBoxAuthor.Text;
             string description = TBoxDescription.Text;
@@ -69,7 +82,40 @@ namespace LibraraySystem
             if (!Validation.ValidateBook(title, author, description, genre))
             {
                 MessageBox.Show("Please Re-enter");
+                return;
             }
+
+            if(Book.BookExists(title, author))
+            {
+                MessageBox.Show("Book Already Exists!", "Duplicate Book");
+                return;
+            }
+
+            string selectedGenre = CBgenre.SelectedItem.ToString().Substring(0, 2);
+            Book b1 = new Book(title,author,description,selectedGenre);
+            b1.Id = Book.GetNextBookID();
+            b1.AddBook();
+            MessageBox.Show("\n" + b1.ToString(), "Book Added Successfully");
+            ResetUI();
+
+
+            
+
+
+
+        }
+
+        public void ResetUI()
+        {
+            TboxBookTitle.Text = string.Empty;
+            TBoxAuthor.Text = string.Empty;
+            TBoxBookID.Text = string.Empty;
+            TBoxDescription.Text = string.Empty;
+            CBgenre.SelectedIndex = -1;
+            TboxBookTitle.Clear();
+            TBoxBookID.Text = Book.GetNextBookID().ToString("0000");
+
+
         }
     }
 }

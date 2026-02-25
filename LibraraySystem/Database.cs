@@ -49,6 +49,7 @@ namespace LibraraySystem
 
         public static OracleDataReader ExecuteSingleRowQuery(string query)
         {
+                 
             //Open a connection to an Oracle database
             OracleConnection conn = OpenConnection();
 
@@ -62,7 +63,7 @@ namespace LibraraySystem
 
         }
 
-        public static void ExecuteNonQuery(string query)
+        public static void ExecuteNonQuery(string query,OracleParameter[] parameters)
         {
             //Open a connection to an Oracle database
             OracleConnection conn = OpenConnection();
@@ -70,12 +71,30 @@ namespace LibraraySystem
             //Formulate the DB request
             OracleCommand cmd = new OracleCommand(query, conn);
 
+            if (parameters != null) {
+                cmd.Parameters.AddRange(parameters);
+            }
+
+
             //Execute the DB non-query
             cmd.ExecuteNonQuery();
 
             //Close the DB connection
             conn.Close();
 
+        }
+
+        public static object ExecuteScalar(string query, OracleParameter[] parameters) {
+        
+            OracleConnection conn = OpenConnection();
+            OracleCommand cmd = new OracleCommand(query,conn);
+
+            if(parameters != null)
+            {
+                cmd.Parameters.AddRange(parameters);
+            }
+
+            return cmd.ExecuteScalar();
         }
     }
 }

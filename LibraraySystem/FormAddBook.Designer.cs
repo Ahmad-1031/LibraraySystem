@@ -39,6 +39,7 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            TBoxBookID = new TextBox();
             grbAddBook.SuspendLayout();
             SuspendLayout();
             // 
@@ -144,11 +145,20 @@
             label2.TabIndex = 1;
             label2.Text = "Genre";
             // 
+            // TBoxBookID
+            // 
+            TBoxBookID.Location = new Point(130, 38);
+            TBoxBookID.Name = "TBoxBookID";
+            TBoxBookID.ReadOnly = true;
+            TBoxBookID.Size = new Size(59, 23);
+            TBoxBookID.TabIndex = 2;
+            // 
             // FormAddBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 346);
+            Controls.Add(TBoxBookID);
             Controls.Add(grbAddBook);
             Controls.Add(label1);
             Name = "FormAddBook";
@@ -173,5 +183,6 @@
         private Label label3;
         private Label label2;
         private Button AddBookBT;
+        private TextBox TBoxBookID;
     }
 }
