@@ -1,7 +1,9 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,15 +12,16 @@ namespace LibraraySystem
     class Book
     {
         public int Id { get; set; }
-        public string Title {  get; set; }
+        public string Title { get; set; }
         public string Author { get; set; }
         public string Description { get; set; }
         public string Genre { get; set; }
         public string Status { get; set; }
         public string IsDeleted { get; set; }
 
-        public Book(string title, string author, string description, string genre)
+        public Book(int id,string title, string author, string description, string genre)
         {
+            Id = id;
             Title = title;
             Author = author;
             Description = description;
@@ -58,7 +61,7 @@ namespace LibraraySystem
             };
 
             int count = Convert.ToInt32(Database.ExecuteScalar(sql, parameters));
-            if(count > 0)
+            if (count > 0)
             {
                 return true;
             }
@@ -66,7 +69,7 @@ namespace LibraraySystem
             {
                 return false;
             }
-               
+
         }
 
         public void AddBook()
@@ -100,6 +103,38 @@ namespace LibraraySystem
             return str;
         }
 
-        
+        public static DataSet FindBooks(String name)
+        {
+            String sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION FROM Books " +
+                "WHERE BOOKTITLE LIKE :name ORDER BY BOOKTITLE";
+
+            OracleParameter[] parameters = {
+
+                new OracleParameter(":name","%" + name + "%")
+            };
+            return Database.ExecuteMultiRowQuery(sql,parameters);
+        }
+
+        public static Book GetBook(int id)
+        {
+
+            string sqlQuery = "SELECT * FROM Books WHERE BOOKID = " + id;
+            OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery);
+            dr.Read();
+
+            
+            string title = dr.GetString("BOOKTITLE");
+            string author = dr.GetString ("AUTHOR");
+            string description = dr.GetString ("DESCRIPTION");
+            string genre = dr.GetString("GENRECODE");
+
+            dr.Close();
+            
+            return new Book(id,title,author,description,genre);
+            
+        }
+
     }
+       
+    
 }

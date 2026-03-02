@@ -22,5 +22,11 @@ namespace LibraraySystem
             FormAddBook formAddBook = new FormAddBook();
             formAddBook.ShowDialog();
         }
+
+        private void FormUpdateBook_Click(object sender, EventArgs e)
+        {
+            FormUpdateBook formUpdateBook = new FormUpdateBook();
+            formUpdateBook.ShowDialog();
+        }
     }
 }

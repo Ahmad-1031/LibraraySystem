@@ -22,13 +22,16 @@ namespace LibraraySystem
             return conn;
         }
 
-        public static DataSet ExecuteMultiRowQuery(string query)
+        public static DataSet ExecuteMultiRowQuery(string query, OracleParameter[] parameters = null)
         {
             //Open a connection to an Oracle database
             OracleConnection conn = OpenConnection();
 
             //Formulate the DB request
             OracleCommand cmd = new OracleCommand(query, conn);
+            if (parameters != null) {
+                cmd.Parameters.AddRange(parameters);
+            }
 
             //Use an OracleDataAdapter as a bridge between the DB and an in-memory
             //data structure (a DataSet in this case)

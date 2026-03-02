@@ -92,8 +92,7 @@ namespace LibraraySystem
             }
 
             string selectedGenre = CBgenre.SelectedItem.ToString().Substring(0, 2);
-            Book b1 = new Book(title,author,description,selectedGenre);
-            b1.Id = Book.GetNextBookID();
+            Book b1 = new Book(Convert.ToInt32(TBoxBookID),title,author,description,selectedGenre);
             b1.AddBook();
             MessageBox.Show("\n" + b1.ToString(), "Book Added Successfully");
             ResetUI();

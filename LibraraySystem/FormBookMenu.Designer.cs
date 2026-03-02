@@ -64,6 +64,7 @@
             FormUpdateBook.TabIndex = 2;
             FormUpdateBook.Text = "Update Book";
             FormUpdateBook.UseVisualStyleBackColor = true;
+            FormUpdateBook.Click += FormUpdateBook_Click;
             // 
             // FormRemoveBook
             // 
