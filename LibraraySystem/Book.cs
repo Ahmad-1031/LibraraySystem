@@ -144,9 +144,6 @@ namespace LibraraySystem
         public void UpdateBook()
         {
 
-           
-        
-        
 
         String sqlQuery = "UPDATE BOOKS SET " +
             "BOOKTITLE = :BookTitle, " +

@@ -1,6 +1,6 @@
 ﻿namespace LibraraySystem
 {
-    partial class FormUpdateBook
+    partial class FormRemoveBook
     {
         /// <summary>
         /// Required designer variable.
@@ -28,123 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TBoxSearchB = new TextBox();
-            label1 = new Label();
             SearchBt = new Button();
+            label1 = new Label();
+            TBoxSearchB = new TextBox();
             grdBooks = new DataGridView();
             grpBookDetails = new GroupBox();
-            UpdateBookBT = new Button();
-            CBgenre = new ComboBox();
-            TboxBookTitle = new TextBox();
-            TBoxAuthor = new TextBox();
-            TBoxDescription = new TextBox();
+            RemoveBookBt = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            LabelBookTitle = new Label();
+            LabelAuthor = new Label();
+            LabelGenre = new Label();
+            TboxDescription = new TextBox();
             ((System.ComponentModel.ISupportInitialize)grdBooks).BeginInit();
             grpBookDetails.SuspendLayout();
             SuspendLayout();
-            // 
-            // TBoxSearchB
-            // 
-            TBoxSearchB.Location = new Point(197, 39);
-            TBoxSearchB.Name = "TBoxSearchB";
-            TBoxSearchB.Size = new Size(371, 23);
-            TBoxSearchB.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(19, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(159, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Enter Book Name (or part of)";
             // 
             // SearchBt
             // 
             SearchBt.BackColor = Color.Green;
             SearchBt.ForeColor = SystemColors.ControlLight;
-            SearchBt.Location = new Point(582, 38);
+            SearchBt.Location = new Point(598, 42);
             SearchBt.Name = "SearchBt";
             SearchBt.Size = new Size(119, 24);
-            SearchBt.TabIndex = 2;
+            SearchBt.TabIndex = 5;
             SearchBt.Text = "Search Book";
             SearchBt.UseVisualStyleBackColor = false;
-            SearchBt.Click += SearchBt_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(35, 46);
+            label1.Name = "label1";
+            label1.Size = new Size(159, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Enter Book Name (or part of)";
+            // 
+            // TBoxSearchB
+            // 
+            TBoxSearchB.Location = new Point(213, 43);
+            TBoxSearchB.Name = "TBoxSearchB";
+            TBoxSearchB.Size = new Size(371, 23);
+            TBoxSearchB.TabIndex = 3;
             // 
             // grdBooks
             // 
             grdBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdBooks.Location = new Point(67, 104);
+            grdBooks.Location = new Point(61, 95);
             grdBooks.Name = "grdBooks";
-            grdBooks.Size = new Size(634, 176);
-            grdBooks.TabIndex = 3;
-            grdBooks.CellClick += grdBooks_CellClick;
-            grdBooks.CellContentClick += grdBooks_CellContentClick;
+            grdBooks.Size = new Size(645, 176);
+            grdBooks.TabIndex = 6;
             // 
             // grpBookDetails
             // 
-            grpBookDetails.Controls.Add(UpdateBookBT);
-            grpBookDetails.Controls.Add(CBgenre);
-            grpBookDetails.Controls.Add(TboxBookTitle);
-            grpBookDetails.Controls.Add(TBoxAuthor);
-            grpBookDetails.Controls.Add(TBoxDescription);
+            grpBookDetails.Controls.Add(TboxDescription);
+            grpBookDetails.Controls.Add(LabelGenre);
+            grpBookDetails.Controls.Add(LabelAuthor);
+            grpBookDetails.Controls.Add(LabelBookTitle);
+            grpBookDetails.Controls.Add(RemoveBookBt);
             grpBookDetails.Controls.Add(label5);
             grpBookDetails.Controls.Add(label4);
             grpBookDetails.Controls.Add(label3);
             grpBookDetails.Controls.Add(label2);
-            grpBookDetails.Location = new Point(110, 304);
+            grpBookDetails.Location = new Point(111, 299);
             grpBookDetails.Name = "grpBookDetails";
-            grpBookDetails.Size = new Size(567, 267);
-            grpBookDetails.TabIndex = 4;
+            grpBookDetails.Size = new Size(567, 342);
+            grpBookDetails.TabIndex = 7;
             grpBookDetails.TabStop = false;
             grpBookDetails.Text = "Update Book Details";
             // 
-            // UpdateBookBT
+            // RemoveBookBt
             // 
-            UpdateBookBT.Location = new Point(214, 212);
-            UpdateBookBT.Name = "UpdateBookBT";
-            UpdateBookBT.Size = new Size(129, 23);
-            UpdateBookBT.TabIndex = 11;
-            UpdateBookBT.Text = "Update Book";
-            UpdateBookBT.UseVisualStyleBackColor = true;
-            UpdateBookBT.Click += UpdateBookBT_Click;
-            // 
-            // CBgenre
-            // 
-            CBgenre.FormattingEnabled = true;
-            CBgenre.Location = new Point(180, 172);
-            CBgenre.Name = "CBgenre";
-            CBgenre.Size = new Size(210, 23);
-            CBgenre.TabIndex = 18;
-            // 
-            // TboxBookTitle
-            // 
-            TboxBookTitle.Location = new Point(180, 73);
-            TboxBookTitle.Name = "TboxBookTitle";
-            TboxBookTitle.Size = new Size(210, 23);
-            TboxBookTitle.TabIndex = 17;
-            // 
-            // TBoxAuthor
-            // 
-            TBoxAuthor.Location = new Point(180, 108);
-            TBoxAuthor.Name = "TBoxAuthor";
-            TBoxAuthor.Size = new Size(210, 23);
-            TBoxAuthor.TabIndex = 16;
-            // 
-            // TBoxDescription
-            // 
-            TBoxDescription.Location = new Point(180, 143);
-            TBoxDescription.Name = "TBoxDescription";
-            TBoxDescription.Size = new Size(210, 23);
-            TBoxDescription.TabIndex = 15;
+            RemoveBookBt.Location = new Point(206, 296);
+            RemoveBookBt.Name = "RemoveBookBt";
+            RemoveBookBt.Size = new Size(129, 23);
+            RemoveBookBt.TabIndex = 11;
+            RemoveBookBt.Text = "Remove Book";
+            RemoveBookBt.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(107, 146);
+            label5.Location = new Point(107, 176);
             label5.Name = "label5";
             label5.Size = new Size(67, 15);
             label5.TabIndex = 14;
@@ -171,25 +138,61 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(107, 180);
+            label2.Location = new Point(107, 146);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 10;
             label2.Text = "Genre";
             // 
-            // FormUpdateBook
+            // LabelBookTitle
+            // 
+            LabelBookTitle.AutoSize = true;
+            LabelBookTitle.Location = new Point(225, 76);
+            LabelBookTitle.Name = "LabelBookTitle";
+            LabelBookTitle.Size = new Size(38, 15);
+            LabelBookTitle.TabIndex = 15;
+            LabelBookTitle.Text = "label6";
+            // 
+            // LabelAuthor
+            // 
+            LabelAuthor.AutoSize = true;
+            LabelAuthor.Location = new Point(225, 111);
+            LabelAuthor.Name = "LabelAuthor";
+            LabelAuthor.Size = new Size(38, 15);
+            LabelAuthor.TabIndex = 16;
+            LabelAuthor.Text = "label7";
+            // 
+            // LabelGenre
+            // 
+            LabelGenre.AutoSize = true;
+            LabelGenre.Location = new Point(225, 146);
+            LabelGenre.Name = "LabelGenre";
+            LabelGenre.Size = new Size(38, 15);
+            LabelGenre.TabIndex = 17;
+            LabelGenre.Text = "label8";
+            // 
+            // TboxDescription
+            // 
+            TboxDescription.Location = new Point(180, 176);
+            TboxDescription.Multiline = true;
+            TboxDescription.Name = "TboxDescription";
+            TboxDescription.ReadOnly = true;
+            TboxDescription.ScrollBars = ScrollBars.Vertical;
+            TboxDescription.Size = new Size(293, 98);
+            TboxDescription.TabIndex = 18;
+            // 
+            // FormRemoveBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 593);
+            ClientSize = new Size(800, 653);
             Controls.Add(grpBookDetails);
             Controls.Add(grdBooks);
             Controls.Add(SearchBt);
             Controls.Add(label1);
             Controls.Add(TBoxSearchB);
-            Name = "FormUpdateBook";
-            Text = "FormUpdateBook";
-            Load += FormUpdateBook_Load;
+            Name = "FormRemoveBook";
+            Text = "FormRemoveBook";
             ((System.ComponentModel.ISupportInitialize)grdBooks).EndInit();
             grpBookDetails.ResumeLayout(false);
             grpBookDetails.PerformLayout();
@@ -199,19 +202,19 @@
 
         #endregion
 
-        private TextBox TBoxSearchB;
-        private Label label1;
         private Button SearchBt;
+        private Label label1;
+        private TextBox TBoxSearchB;
         private DataGridView grdBooks;
         private GroupBox grpBookDetails;
-        private Button UpdateBookBT;
-        private ComboBox CBgenre;
-        private TextBox TboxBookTitle;
-        private TextBox TBoxAuthor;
-        private TextBox TBoxDescription;
+        private Label LabelGenre;
+        private Label LabelAuthor;
+        private Label LabelBookTitle;
+        private Button RemoveBookBt;
         private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
+        private TextBox TboxDescription;
     }
 }
