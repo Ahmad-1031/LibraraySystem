@@ -106,7 +106,9 @@ namespace LibraraySystem
         public static DataSet FindBooks(String name)
         {
             String sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION FROM Books " +
-                "WHERE BOOKTITLE LIKE :name ORDER BY BOOKTITLE";
+                "WHERE BOOKTITLE LIKE :name " +
+                "AND ISDELETED = 'N' " +
+                "ORDER BY BOOKTITLE";
 
             OracleParameter[] parameters = {
 
@@ -118,8 +120,13 @@ namespace LibraraySystem
         public static Book GetBook(int id)
         {
 
-            string sqlQuery = "SELECT * FROM Books WHERE BOOKID = " + id;
-            OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery);
+            string sqlQuery = "SELECT * FROM Books WHERE BOOKID = :id";
+
+            OracleParameter[] parameters =
+            {
+                new OracleParameter(":id",id)
+            };
+            OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery,parameters);
             dr.Read();
 
             
@@ -132,6 +139,31 @@ namespace LibraraySystem
             
             return new Book(id,title,author,description,genre);
             
+        }
+
+        public void UpdateBook()
+        {
+
+           
+        
+        
+
+        String sqlQuery = "UPDATE BOOKS SET " +
+            "BOOKTITLE = :BookTitle, " +
+            "AUTHOR = :Author, " +
+            "DESCRIPTION = :Description, " +
+            "GENRECODE = :Genre " +
+            "WHERE BOOKID = :id";
+
+        OracleParameter[] parameters = {
+            new OracleParameter (":BookTitle",Title),
+            new OracleParameter (":Author",Author),
+            new OracleParameter (":Description",Description),
+            new OracleParameter (":Genre",Genre),
+            new OracleParameter(":id",Id)
+        };
+
+        Database.ExecuteNonQuery(sqlQuery, parameters);
         }
 
     }

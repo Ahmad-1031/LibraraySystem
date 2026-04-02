@@ -50,7 +50,7 @@ namespace LibraraySystem
             return ds;
         }
 
-        public static OracleDataReader ExecuteSingleRowQuery(string query)
+        public static OracleDataReader ExecuteSingleRowQuery(string query, OracleParameter[] parameters = null)
         {
                  
             //Open a connection to an Oracle database
@@ -58,6 +58,10 @@ namespace LibraraySystem
 
             //Formulate the DB request
             OracleCommand cmd = new OracleCommand(query, conn);
+            if (parameters != null)
+            {
+                cmd.Parameters.AddRange(parameters);
+            }
 
             //Execute the query and atore the results in an OracleDataReader
             OracleDataReader dr = cmd.ExecuteReader();
@@ -66,7 +70,7 @@ namespace LibraraySystem
 
         }
 
-        public static void ExecuteNonQuery(string query,OracleParameter[] parameters)
+        public static void ExecuteNonQuery(string query,OracleParameter[] parameters = null)
         {
             //Open a connection to an Oracle database
             OracleConnection conn = OpenConnection();
