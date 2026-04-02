@@ -19,7 +19,7 @@ namespace LibraraySystem
         public string Status { get; set; }
         public string IsDeleted { get; set; }
 
-        public Book(int id,string title, string author, string description, string genre)
+        public Book(int id, string title, string author, string description, string genre)
         {
             Id = id;
             Title = title;
@@ -114,7 +114,7 @@ namespace LibraraySystem
 
                 new OracleParameter(":name","%" + name + "%")
             };
-            return Database.ExecuteMultiRowQuery(sql,parameters);
+            return Database.ExecuteMultiRowQuery(sql, parameters);
         }
 
         public static Book GetBook(int id)
@@ -126,33 +126,33 @@ namespace LibraraySystem
             {
                 new OracleParameter(":id",id)
             };
-            OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery,parameters);
+            OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery, parameters);
             dr.Read();
 
-            
+
             string title = dr.GetString("BOOKTITLE");
-            string author = dr.GetString ("AUTHOR");
-            string description = dr.GetString ("DESCRIPTION");
+            string author = dr.GetString("AUTHOR");
+            string description = dr.GetString("DESCRIPTION");
             string genre = dr.GetString("GENRECODE");
 
             dr.Close();
-            
-            return new Book(id,title,author,description,genre);
-            
+
+            return new Book(id, title, author, description, genre);
+
         }
 
         public void UpdateBook()
         {
 
 
-        String sqlQuery = "UPDATE BOOKS SET " +
-            "BOOKTITLE = :BookTitle, " +
-            "AUTHOR = :Author, " +
-            "DESCRIPTION = :Description, " +
-            "GENRECODE = :Genre " +
-            "WHERE BOOKID = :id";
+            String sqlQuery = "UPDATE BOOKS SET " +
+                "BOOKTITLE = :BookTitle, " +
+                "AUTHOR = :Author, " +
+                "DESCRIPTION = :Description, " +
+                "GENRECODE = :Genre " +
+                "WHERE BOOKID = :id";
 
-        OracleParameter[] parameters = {
+            OracleParameter[] parameters = {
             new OracleParameter (":BookTitle",Title),
             new OracleParameter (":Author",Author),
             new OracleParameter (":Description",Description),
@@ -160,9 +160,21 @@ namespace LibraraySystem
             new OracleParameter(":id",Id)
         };
 
-        Database.ExecuteNonQuery(sqlQuery, parameters);
+            Database.ExecuteNonQuery(sqlQuery, parameters);
         }
 
+        public void RemoveBook()
+        {
+            String sqlQuery = "DELETE FROM BOOKS " +
+                "WHERE BOOKID = :id";
+
+            OracleParameter[] parameters = {
+               new OracleParameter(":id",Id)
+            };
+
+            Database.ExecuteNonQuery(sqlQuery,parameters);
+
+        }
     }
        
     

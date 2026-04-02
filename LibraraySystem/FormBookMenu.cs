@@ -28,5 +28,11 @@ namespace LibraraySystem
             FormUpdateBook formUpdateBook = new FormUpdateBook();
             formUpdateBook.ShowDialog();
         }
+
+        private void FormRemoveBook_Click(object sender, EventArgs e)
+        {
+            FormRemoveBook formRemoveBook = new FormRemoveBook();
+            formRemoveBook.ShowDialog();
+        }
     }
 }

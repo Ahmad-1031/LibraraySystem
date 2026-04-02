@@ -75,6 +75,7 @@
             FormRemoveBook.TabIndex = 3;
             FormRemoveBook.Text = "Remove Book";
             FormRemoveBook.UseVisualStyleBackColor = true;
+            FormRemoveBook.Click += FormRemoveBook_Click;
             // 
             // MenuAddBook
             // 

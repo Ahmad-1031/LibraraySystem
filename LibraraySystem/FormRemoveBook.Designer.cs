@@ -33,15 +33,15 @@
             TBoxSearchB = new TextBox();
             grdBooks = new DataGridView();
             grpBookDetails = new GroupBox();
+            TboxDescription = new TextBox();
+            LabelGenre = new Label();
+            LabelAuthor = new Label();
+            LabelBookTitle = new Label();
             RemoveBookBt = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            LabelBookTitle = new Label();
-            LabelAuthor = new Label();
-            LabelGenre = new Label();
-            TboxDescription = new TextBox();
             ((System.ComponentModel.ISupportInitialize)grdBooks).BeginInit();
             grpBookDetails.SuspendLayout();
             SuspendLayout();
@@ -56,6 +56,7 @@
             SearchBt.TabIndex = 5;
             SearchBt.Text = "Search Book";
             SearchBt.UseVisualStyleBackColor = false;
+            SearchBt.Click += SearchBt_Click;
             // 
             // label1
             // 
@@ -80,6 +81,7 @@
             grdBooks.Name = "grdBooks";
             grdBooks.Size = new Size(645, 176);
             grdBooks.TabIndex = 6;
+            grdBooks.CellClick += grdBooks_CellClick;
             // 
             // grpBookDetails
             // 
@@ -97,7 +99,44 @@
             grpBookDetails.Size = new Size(567, 342);
             grpBookDetails.TabIndex = 7;
             grpBookDetails.TabStop = false;
-            grpBookDetails.Text = "Update Book Details";
+            grpBookDetails.Text = "Remove Book Details";
+            // 
+            // TboxDescription
+            // 
+            TboxDescription.Location = new Point(180, 176);
+            TboxDescription.Multiline = true;
+            TboxDescription.Name = "TboxDescription";
+            TboxDescription.ReadOnly = true;
+            TboxDescription.ScrollBars = ScrollBars.Vertical;
+            TboxDescription.Size = new Size(293, 98);
+            TboxDescription.TabIndex = 18;
+            // 
+            // LabelGenre
+            // 
+            LabelGenre.AutoSize = true;
+            LabelGenre.Location = new Point(225, 146);
+            LabelGenre.Name = "LabelGenre";
+            LabelGenre.Size = new Size(38, 15);
+            LabelGenre.TabIndex = 17;
+            LabelGenre.Text = "label8";
+            // 
+            // LabelAuthor
+            // 
+            LabelAuthor.AutoSize = true;
+            LabelAuthor.Location = new Point(225, 111);
+            LabelAuthor.Name = "LabelAuthor";
+            LabelAuthor.Size = new Size(38, 15);
+            LabelAuthor.TabIndex = 16;
+            LabelAuthor.Text = "label7";
+            // 
+            // LabelBookTitle
+            // 
+            LabelBookTitle.AutoSize = true;
+            LabelBookTitle.Location = new Point(225, 76);
+            LabelBookTitle.Name = "LabelBookTitle";
+            LabelBookTitle.Size = new Size(38, 15);
+            LabelBookTitle.TabIndex = 15;
+            LabelBookTitle.Text = "label6";
             // 
             // RemoveBookBt
             // 
@@ -107,6 +146,7 @@
             RemoveBookBt.TabIndex = 11;
             RemoveBookBt.Text = "Remove Book";
             RemoveBookBt.UseVisualStyleBackColor = true;
+            RemoveBookBt.Click += RemoveBookBt_Click;
             // 
             // label5
             // 
@@ -144,43 +184,6 @@
             label2.TabIndex = 10;
             label2.Text = "Genre";
             // 
-            // LabelBookTitle
-            // 
-            LabelBookTitle.AutoSize = true;
-            LabelBookTitle.Location = new Point(225, 76);
-            LabelBookTitle.Name = "LabelBookTitle";
-            LabelBookTitle.Size = new Size(38, 15);
-            LabelBookTitle.TabIndex = 15;
-            LabelBookTitle.Text = "label6";
-            // 
-            // LabelAuthor
-            // 
-            LabelAuthor.AutoSize = true;
-            LabelAuthor.Location = new Point(225, 111);
-            LabelAuthor.Name = "LabelAuthor";
-            LabelAuthor.Size = new Size(38, 15);
-            LabelAuthor.TabIndex = 16;
-            LabelAuthor.Text = "label7";
-            // 
-            // LabelGenre
-            // 
-            LabelGenre.AutoSize = true;
-            LabelGenre.Location = new Point(225, 146);
-            LabelGenre.Name = "LabelGenre";
-            LabelGenre.Size = new Size(38, 15);
-            LabelGenre.TabIndex = 17;
-            LabelGenre.Text = "label8";
-            // 
-            // TboxDescription
-            // 
-            TboxDescription.Location = new Point(180, 176);
-            TboxDescription.Multiline = true;
-            TboxDescription.Name = "TboxDescription";
-            TboxDescription.ReadOnly = true;
-            TboxDescription.ScrollBars = ScrollBars.Vertical;
-            TboxDescription.Size = new Size(293, 98);
-            TboxDescription.TabIndex = 18;
-            // 
             // FormRemoveBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -193,6 +196,7 @@
             Controls.Add(TBoxSearchB);
             Name = "FormRemoveBook";
             Text = "FormRemoveBook";
+            Load += FormRemoveBook_Load;
             ((System.ComponentModel.ISupportInitialize)grdBooks).EndInit();
             grpBookDetails.ResumeLayout(false);
             grpBookDetails.PerformLayout();
