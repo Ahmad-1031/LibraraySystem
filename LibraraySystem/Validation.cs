@@ -53,5 +53,16 @@ namespace LibraraySystem
 
             return true;
         }
+
+        public static bool ValidateMember(String Fname, String Sname, int phone, String Email)
+        {
+            if (String.IsNullOrEmpty(Fname))
+            {
+                MessageBox.Show("First Name must not be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
     }
 }

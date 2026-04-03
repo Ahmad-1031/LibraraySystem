@@ -1,6 +1,6 @@
 ﻿namespace LibraraySystem
 {
-    partial class MenuAddBook
+    partial class BookMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -77,7 +77,7 @@
             FormRemoveBook.UseVisualStyleBackColor = true;
             FormRemoveBook.Click += FormRemoveBook_Click;
             // 
-            // MenuAddBook
+            // BookMenu
             // 
             AutoScaleDimensions = new SizeF(12F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -88,8 +88,8 @@
             Controls.Add(label1);
             Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(5);
-            Name = "MenuAddBook";
-            Text = "FormBookMenu";
+            Name = "BookMenu";
+            Text = "Book Menu";
             ResumeLayout(false);
             PerformLayout();
         }

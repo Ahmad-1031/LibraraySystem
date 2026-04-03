@@ -57,6 +57,7 @@
             membersToolStripMenuItem.Name = "membersToolStripMenuItem";
             membersToolStripMenuItem.Size = new Size(69, 20);
             membersToolStripMenuItem.Text = "Members";
+            membersToolStripMenuItem.Click += membersToolStripMenuItem_Click;
             // 
             // loanToolStripMenuItem
             // 
@@ -70,14 +71,14 @@
             adminToolStripMenuItem.Size = new Size(55, 20);
             adminToolStripMenuItem.Text = "Admin";
             // 
-            // Form1
+            // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "Main";
             Text = "Main";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LibraraySystem
 {
-    public partial class MenuAddBook : Form
+    public partial class BookMenu : Form
     {
-        public MenuAddBook()
+        public BookMenu()
         {
             InitializeComponent();
         }
