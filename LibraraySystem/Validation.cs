@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Net.Mail;
 
 namespace LibraraySystem
 {
@@ -54,15 +56,96 @@ namespace LibraraySystem
             return true;
         }
 
-        public static bool ValidateMember(String Fname, String Sname, int phone, String Email)
+        public static bool ValidateMember(String Fname, String Sname, String phone, String Email)
         {
-            if (String.IsNullOrEmpty(Fname))
-            {
-                MessageBox.Show("First Name must not be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            String FirstName = ValidName(Fname, "First Name");
+            if (FirstName != null) {
+                MessageBox.Show(FirstName, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
+            String Surname = ValidName(Sname, "SurName");
+            if (Surname != null) {
+                MessageBox.Show(Surname, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            String PhoneNumber = ValidPhone(phone, "Phone Number");
+            if (PhoneNumber != null) {
+                MessageBox.Show(PhoneNumber, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            bool EmailAdd = ValidEmail(Email);
+            if (EmailAdd == false) {
+                MessageBox.Show("Inncorrect Email Address!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+
+
             return true;
+        }
+
+        private static String ValidName (String name, String fieldName)
+        {
+
+            if(String.IsNullOrEmpty(name))
+            {
+                return $"{fieldName} must not be empty!";
+            }
+
+            if (name.Length < 2 || name.Length > 25)
+            {
+                return $"{fieldName} must be between 2 and 25 characters";
+                
+            }
+
+            for (int i = 0; i < name.Length; i++) {
+                char c = name[i];
+
+                if(!(char.IsLetter(c) || c == ' ' || c == '\''))
+                {
+                    return $"{fieldName} contains invalid characters";
+                }
+            }
+
+            return null;
+
+        }
+
+        private static String ValidPhone(String phone, String fieldName) {
+
+            if(phone.Length < 9 || phone.Length > 13)
+            {
+                return $"{fieldName} must be between 9 and 13 digits!";
+            }
+
+            for (int i = 0; i < phone.Length; i++) {
+
+                if (!char.IsDigit(phone[i])) {
+                    return $"{fieldName} must contain digits only!";
+                    break;
+                }
+            }
+
+            return null;
+            
+        }
+
+        private static bool ValidEmail(String email)
+        {
+            try
+            {
+                var address = new MailAddress(email);
+                return address.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

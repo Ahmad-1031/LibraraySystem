@@ -77,5 +77,23 @@ namespace LibraraySystem
             }
         }
 
+        public void AddMember()
+        {
+            string sqlQuery = "INSERT INTO Members (MEMID, FNAME, SNAME, PHONE, EMAIL, ISDELETED)" +
+                "VALUES (:memid, :fname, :sname, :phone, :email, :isdeleted)";
+
+            OracleParameter[] parameters = {
+                new OracleParameter(":memid",MemID),
+                new OracleParameter(":fname",Fname),
+                new OracleParameter(":sname",Sname),
+                new OracleParameter(":phone",Phone),
+                new OracleParameter(":email",Email),
+                new OracleParameter(":isdeleted",IsDeleted)
+
+            };
+
+            Database.ExecuteNonQuery(sqlQuery, parameters);
+        }
+
     }
 }

@@ -31,7 +31,6 @@
             label1 = new Label();
             grbAddBook = new GroupBox();
             AddBookBT = new Button();
-            CBgenre = new ComboBox();
             TboxBookTitle = new TextBox();
             TBoxAuthor = new TextBox();
             TBoxDescription = new TextBox();
@@ -40,6 +39,7 @@
             label3 = new Label();
             label2 = new Label();
             TBoxBookID = new TextBox();
+            CBgenre = new ComboBox();
             grbAddBook.SuspendLayout();
             SuspendLayout();
             // 
@@ -79,14 +79,6 @@
             AddBookBT.Text = "Add Book";
             AddBookBT.UseVisualStyleBackColor = true;
             AddBookBT.Click += AddBookBT_Click;
-            // 
-            // CBgenre
-            // 
-            CBgenre.FormattingEnabled = true;
-            CBgenre.Location = new Point(94, 132);
-            CBgenre.Name = "CBgenre";
-            CBgenre.Size = new Size(210, 23);
-            CBgenre.TabIndex = 9;
             // 
             // TboxBookTitle
             // 
@@ -153,6 +145,14 @@
             TBoxBookID.Size = new Size(59, 23);
             TBoxBookID.TabIndex = 2;
             // 
+            // CBgenre
+            // 
+            CBgenre.FormattingEnabled = true;
+            CBgenre.Location = new Point(94, 132);
+            CBgenre.Name = "CBgenre";
+            CBgenre.Size = new Size(210, 23);
+            CBgenre.TabIndex = 9;
+            // 
             // FormAddBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -174,7 +174,6 @@
 
         private Label label1;
         private GroupBox grbAddBook;
-        private ComboBox CBgenre;
         private TextBox TboxBookTitle;
         private TextBox TBoxAuthor;
         private TextBox TBoxDescription;
@@ -184,5 +183,6 @@
         private Label label2;
         private Button AddBookBT;
         private TextBox TBoxBookID;
+        private ComboBox CBgenre;
     }
 }
