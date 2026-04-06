@@ -62,7 +62,8 @@ namespace LibraraySystem
             member.Email = Email;
             member.AddMember();
 
-            MessageBox.Show("Success", "Member Added Successfully", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Member Added Successfully","Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            ResetUI();
 
 
 
@@ -77,7 +78,7 @@ namespace LibraraySystem
             TBoxSurname.Text = string.Empty;
             TBoxPhone.Text = string.Empty;
             TBoxEmail.Text = string.Empty;
-            TBoxMemID.Text = string.Empty;
+            TBoxMemID.Text = "M00" + Member.NextMemID();
 
         }
     }

@@ -53,6 +53,7 @@
             FormUpdateBook.TabIndex = 6;
             FormUpdateBook.Text = "Update Member";
             FormUpdateBook.UseVisualStyleBackColor = true;
+            FormUpdateBook.Click += FormUpdateBook_Click;
             // 
             // button1
             // 

@@ -58,7 +58,7 @@ namespace LibraraySystem
         }
 
         public static bool MemberExists(int phone, String email) {
-            string sql = "SELECT COUNT(*) FROM MEMBERS WHERE PHONE = :phone AND EMAIL = :email";
+            string sql = "SELECT COUNT(*) FROM MEMBERS WHERE PHONE = :phone OR EMAIL = :email";
 
             OracleParameter[] parameters = {
 
