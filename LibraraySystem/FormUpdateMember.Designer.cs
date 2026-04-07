@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            FormUpdateBook = new Button();
-            button1 = new Button();
+            OPName = new Button();
+            OPMemID = new Button();
             label1 = new Label();
             grpMemberID = new GroupBox();
             SearchMemberIDBt = new Button();
@@ -56,25 +56,27 @@
             ((System.ComponentModel.ISupportInitialize)grdMembers).BeginInit();
             SuspendLayout();
             // 
-            // FormUpdateBook
+            // OPName
             // 
-            FormUpdateBook.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormUpdateBook.Location = new Point(334, 59);
-            FormUpdateBook.Name = "FormUpdateBook";
-            FormUpdateBook.Size = new Size(93, 28);
-            FormUpdateBook.TabIndex = 6;
-            FormUpdateBook.Text = "Name";
-            FormUpdateBook.UseVisualStyleBackColor = true;
+            OPName.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            OPName.Location = new Point(334, 59);
+            OPName.Name = "OPName";
+            OPName.Size = new Size(93, 28);
+            OPName.TabIndex = 6;
+            OPName.Text = "Name";
+            OPName.UseVisualStyleBackColor = true;
+            OPName.Click += OPName_Click;
             // 
-            // button1
+            // OPMemID
             // 
-            button1.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(235, 59);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 28);
-            button1.TabIndex = 5;
-            button1.Text = "Member ID";
-            button1.UseVisualStyleBackColor = true;
+            OPMemID.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            OPMemID.Location = new Point(235, 59);
+            OPMemID.Name = "OPMemID";
+            OPMemID.Size = new Size(93, 28);
+            OPMemID.TabIndex = 5;
+            OPMemID.Text = "Member ID";
+            OPMemID.UseVisualStyleBackColor = true;
+            OPMemID.Click += button1_Click;
             // 
             // label1
             // 
@@ -106,6 +108,7 @@
             SearchMemberIDBt.TabIndex = 2;
             SearchMemberIDBt.Text = "Search";
             SearchMemberIDBt.UseVisualStyleBackColor = true;
+            SearchMemberIDBt.Click += SearchMemberIDBt_Click;
             // 
             // TboxMemberIDS
             // 
@@ -143,6 +146,7 @@
             SearchNameBt.TabIndex = 2;
             SearchNameBt.Text = "Search";
             SearchNameBt.UseVisualStyleBackColor = true;
+            SearchNameBt.Click += SearchNameBt_Click;
             // 
             // TboxNameS
             // 
@@ -193,6 +197,7 @@
             AddMemberBt.TabIndex = 2;
             AddMemberBt.Text = "Update Member";
             AddMemberBt.UseVisualStyleBackColor = true;
+            AddMemberBt.Click += AddMemberBt_Click;
             // 
             // TboxFirstName
             // 
@@ -254,10 +259,11 @@
             // grdMembers
             // 
             grdMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdMembers.Location = new Point(12, 253);
+            grdMembers.Location = new Point(37, 253);
             grdMembers.Name = "grdMembers";
-            grdMembers.Size = new Size(634, 196);
+            grdMembers.Size = new Size(593, 196);
             grdMembers.TabIndex = 10;
+            grdMembers.CellClick += grdMembers_CellClick;
             // 
             // FormUpdateMember
             // 
@@ -268,8 +274,8 @@
             Controls.Add(grbUpdateMember);
             Controls.Add(grpMemberName);
             Controls.Add(grpMemberID);
-            Controls.Add(FormUpdateBook);
-            Controls.Add(button1);
+            Controls.Add(OPName);
+            Controls.Add(OPMemID);
             Controls.Add(label1);
             Name = "FormUpdateMember";
             Text = "FormUpdateMember";
@@ -287,8 +293,8 @@
 
         #endregion
 
-        private Button FormUpdateBook;
-        private Button button1;
+        private Button OPName;
+        private Button OPMemID;
         private Label label1;
         private GroupBox grpMemberID;
         private Button SearchMemberIDBt;

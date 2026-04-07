@@ -147,5 +147,71 @@ namespace LibraraySystem
                 return false;
             }
         }
+
+        public static bool ValidMemberID(String name)
+        {
+            if(name.Length < 3)
+            {
+                MessageBox.Show("Member ID must be longer than 3 chars!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+ 
+            }
+
+            if (name.Length > 3)
+            {
+                char FirstChar = name[0];
+                char SecondChar = name[1];
+                char ThirdChar = name[2];
+                if (char.ToUpper(FirstChar) != 'M')
+                {
+                    MessageBox.Show("Member ID must begin with 'M' or 'm'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (SecondChar != '0' || ThirdChar != '0')
+                {
+                    MessageBox.Show("Second & Third Char must be Zeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                for (int i = 3; i < name.Length; i++) {
+                    if (!char.IsDigit(name[i])) {
+                        MessageBox.Show("Member ID must contain all numbers after 'M'/'m'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+
+
+
+            return true;
+        }
+
+        public static bool ValidNameSearch(String name)
+        {
+            if (name.Length > 0)
+            {
+                for (int i = 0; i < name.Length; i++)
+                {
+                    char c = name[i];
+                    if (char.IsDigit(c))
+                    {
+                        MessageBox.Show("Name Must not have Numbers!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                        
+                    }
+
+
+                    if (!(char.IsLetter(c) || c == '\''))
+                    {
+                        MessageBox.Show("Name contains invalid chars! " + "[" + c + "]", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                        
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }

@@ -165,7 +165,8 @@ namespace LibraraySystem
 
         public void RemoveBook()
         {
-            String sqlQuery = "DELETE FROM BOOKS " +
+            String sqlQuery = "UPDATE BOOKS SET " +
+                "ISDELETED = 'Y' "+
                 "WHERE BOOKID = :id";
 
             OracleParameter[] parameters = {

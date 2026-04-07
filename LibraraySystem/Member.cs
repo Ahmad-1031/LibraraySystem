@@ -1,9 +1,11 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LibraraySystem
 {
@@ -29,12 +31,11 @@ namespace LibraraySystem
         public override string ToString() {
             String str = "Member Details:\n ";
 
-            str += "M00" + MemID + "\n" +
-                   Fname + "\n" +
-                   Sname + "\n" +
-                   Phone + "\n" +
-                   Email + "\n" +
-                   IsDeleted;
+            str += $"Member ID: M00{MemID}" + "\n" +
+                   $"First Name: {Fname}" + "\n" +
+                   $"Surname: {Sname}" + "\n" +
+                   $"Phone Number: {Phone}" + "\n" +
+                   $"Email: {Email}" + "\n";
             return str;
         }
 
@@ -91,6 +92,75 @@ namespace LibraraySystem
                 new OracleParameter(":isdeleted",IsDeleted)
 
             };
+
+            Database.ExecuteNonQuery(sqlQuery, parameters);
+        }
+
+        public static DataSet FindMemberByName(string name)
+        {
+            String sql = "SELECT MEMID, FNAME, SNAME, PHONE, EMAIL FROM MEMBERS " +
+                "WHERE FNAME LIKE :name AND ISDELETED = 'N' " +
+                "ORDER BY FNAME";
+            OracleParameter[] parameters = {
+                new OracleParameter(":name","%" + name + "%"),
+                
+            };
+            return Database.ExecuteMultiRowQuery(sql, parameters);
+        }
+
+        public static DataSet FindMemberByID(int id)
+        {
+            String sql = "SELECT MEMID, FNAME, SNAME, PHONE, EMAIL FROM MEMBERS " +
+                "WHERE MEMID = :id AND ISDELETED = 'N'";
+
+            OracleParameter[] parameters = {
+                new OracleParameter(":id",id)
+
+            };
+
+            return Database.ExecuteMultiRowQuery (sql, parameters);
+
+        }
+
+        public static Member GetMember(int id)
+        {
+            string sqlQuery = "SELECT * FROM MEMBERS WHERE MEMID = :id AND ISDELETED = 'N'";
+
+            OracleParameter[] parameters =
+            {
+                new OracleParameter(":id",id)
+            };
+            OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery, parameters);
+            dr.Read();
+
+            string Fname = dr.GetString("FNAME");
+            string Sname = dr.GetString("SNAME");
+            int Phone = int.Parse(dr.GetString("PHONE"));
+            string Email = dr.GetString("EMAIL");
+
+            dr.Close();
+
+            return new Member(id, Fname, Sname, Phone, Email);
+
+
+        }
+
+        public void UpdateMember()
+        {
+            String sqlQuery = "UPDATE MEMBERS SET " +
+                "FNAME = :fname, " +
+                "SNAME = :sname, " +
+                "PHONE = :phone, " +
+                "EMAIL = :email " +
+                "WHERE MEMID = :id";
+
+            OracleParameter[] parameters = {
+            new OracleParameter (":fname",Fname),
+            new OracleParameter (":sname",Sname),
+            new OracleParameter (":phone",Phone),
+            new OracleParameter (":email",Email),
+            new OracleParameter(":id",MemID)
+        };
 
             Database.ExecuteNonQuery(sqlQuery, parameters);
         }

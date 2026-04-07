@@ -15,6 +15,7 @@ namespace LibraraySystem
         public FormUpdateBook()
         {
             InitializeComponent();
+            grdBooks.Visible = false;
             grpBookDetails.Visible = false;
         }
 
@@ -28,7 +29,7 @@ namespace LibraraySystem
         private void SearchBt_Click(object sender, EventArgs e)
         {
             grdBooks.DataSource = Book.FindBooks(TBoxSearchB.Text).Tables[0];
-            if (grdBooks.Rows.Count == 0)
+            if (grdBooks.Rows.Count == 1)
             {
                 MessageBox.Show("No Data Found!");
                 TBoxSearchB.Focus();
@@ -127,6 +128,7 @@ namespace LibraraySystem
             TBoxAuthor.Text = string.Empty;
             TBoxDescription.Text = string.Empty;
             CBgenre.SelectedIndex = -1;
+            grdBooks.DataSource = null;
             TboxBookTitle.Clear();
 
 
