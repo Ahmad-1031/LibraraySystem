@@ -41,7 +41,7 @@
             label3 = new Label();
             grbUpdateMember = new GroupBox();
             TBoxEmail = new TextBox();
-            AddMemberBt = new Button();
+            UpdateMemberBt = new Button();
             TboxFirstName = new TextBox();
             TBoxSurname = new TextBox();
             TBoxPhone = new TextBox();
@@ -76,7 +76,7 @@
             OPMemID.TabIndex = 5;
             OPMemID.Text = "Member ID";
             OPMemID.UseVisualStyleBackColor = true;
-            OPMemID.Click += button1_Click;
+            OPMemID.Click += OPMemID_Click;
             // 
             // label1
             // 
@@ -167,7 +167,7 @@
             // grbUpdateMember
             // 
             grbUpdateMember.Controls.Add(TBoxEmail);
-            grbUpdateMember.Controls.Add(AddMemberBt);
+            grbUpdateMember.Controls.Add(UpdateMemberBt);
             grbUpdateMember.Controls.Add(TboxFirstName);
             grbUpdateMember.Controls.Add(TBoxSurname);
             grbUpdateMember.Controls.Add(TBoxPhone);
@@ -189,15 +189,15 @@
             TBoxEmail.Size = new Size(210, 23);
             TBoxEmail.TabIndex = 8;
             // 
-            // AddMemberBt
+            // UpdateMemberBt
             // 
-            AddMemberBt.Location = new Point(129, 176);
-            AddMemberBt.Name = "AddMemberBt";
-            AddMemberBt.Size = new Size(112, 23);
-            AddMemberBt.TabIndex = 2;
-            AddMemberBt.Text = "Update Member";
-            AddMemberBt.UseVisualStyleBackColor = true;
-            AddMemberBt.Click += AddMemberBt_Click;
+            UpdateMemberBt.Location = new Point(129, 176);
+            UpdateMemberBt.Name = "UpdateMemberBt";
+            UpdateMemberBt.Size = new Size(112, 23);
+            UpdateMemberBt.TabIndex = 2;
+            UpdateMemberBt.Text = "Update Member";
+            UpdateMemberBt.UseVisualStyleBackColor = true;
+            UpdateMemberBt.Click += AddMemberBt_Click;
             // 
             // TboxFirstName
             // 
@@ -306,7 +306,7 @@
         private Label label3;
         private GroupBox grbUpdateMember;
         private TextBox TBoxEmail;
-        private Button AddMemberBt;
+        private Button UpdateMemberBt;
         private TextBox TboxFirstName;
         private TextBox TBoxSurname;
         private TextBox TBoxPhone;

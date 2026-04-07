@@ -195,7 +195,7 @@
             Controls.Add(label1);
             Controls.Add(TBoxSearchB);
             Name = "FormRemoveBook";
-            Text = "FormRemoveBook";
+            Text = "Remove Book";
             Load += FormRemoveBook_Load;
             ((System.ComponentModel.ISupportInitialize)grdBooks).EndInit();
             grpBookDetails.ResumeLayout(false);

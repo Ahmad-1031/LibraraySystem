@@ -34,7 +34,7 @@ namespace LibraraySystem
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OPMemID_Click(object sender, EventArgs e)
         {
             grpMemberID.Visible = true;
             grpMemberName.Visible = false;
@@ -120,7 +120,8 @@ namespace LibraraySystem
             string Phone = TBoxPhone.Text;
             string Email = TBoxEmail.Text;
 
-            if (!Validation.ValidateMember(Fname, Sname, Phone, Email)) {
+            if (!Validation.ValidateMember(Fname, Sname, Phone, Email))
+            {
                 MessageBox.Show("Please Re-Enter", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -133,7 +134,7 @@ namespace LibraraySystem
             member.UpdateMember();
             ResetUI();
 
-            MessageBox.Show(member.ToString(),"Member Updated Successfully",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show(member.ToString(), "Member Updated Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
         }
@@ -144,15 +145,17 @@ namespace LibraraySystem
             TBoxSurname.Text = String.Empty;
             TBoxPhone.Text = String.Empty;
             TBoxEmail.Text = String.Empty;
-            grbUpdateMember.Visible= false;
-            grdMembers.Visible= false;
+            grbUpdateMember.Visible = false;
+            grdMembers.Visible = false;
             grdMembers.DataSource = null;
-            grpMemberID.Visible= false;
-            grpMemberName.Visible= false;
+            grpMemberID.Visible = false;
+            grpMemberName.Visible = false;
             TboxMemberIDS.Text = String.Empty;
             TboxNameS.Text = String.Empty;
 
 
         }
+
+        
     }
 }

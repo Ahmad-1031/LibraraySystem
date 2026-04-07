@@ -43,6 +43,7 @@
             FormRemoveBook.TabIndex = 7;
             FormRemoveBook.Text = "Remove Member";
             FormRemoveBook.UseVisualStyleBackColor = true;
+            FormRemoveBook.Click += FormRemoveBook_Click;
             // 
             // FormUpdateBook
             // 

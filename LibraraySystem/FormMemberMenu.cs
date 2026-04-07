@@ -27,7 +27,13 @@ namespace LibraraySystem
         {
             FormUpdateMember formUpdateMember = new FormUpdateMember();
             formUpdateMember.ShowDialog();
-            
+
+        }
+
+        private void FormRemoveBook_Click(object sender, EventArgs e)
+        {
+            FormRemoveMember formRemoveMember = new FormRemoveMember();
+            formRemoveMember.ShowDialog();
         }
     }
 }
