@@ -165,5 +165,18 @@ namespace LibraraySystem
             Database.ExecuteNonQuery(sqlQuery, parameters);
         }
 
+        public void RemoveMember()
+        {
+            String sqlQuery = "UPDATE MEMBERS SET " +
+                "ISDELETED = 'Y' " +
+                "WHERE MEMID = :id";
+
+            OracleParameter[] parameters = {
+               new OracleParameter(":id",MemID)
+            };
+
+            Database.ExecuteNonQuery(sqlQuery, parameters);
+        }
+
     }
 }

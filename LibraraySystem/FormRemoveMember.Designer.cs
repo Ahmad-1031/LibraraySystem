@@ -63,6 +63,7 @@
             grdMembers.Name = "grdMembers";
             grdMembers.Size = new Size(593, 196);
             grdMembers.TabIndex = 17;
+            grdMembers.CellClick += grdMembers_CellClick;
             // 
             // grbMemberDetails
             // 
@@ -126,6 +127,7 @@
             RemoveMemberBt.TabIndex = 2;
             RemoveMemberBt.Text = "Remove Member";
             RemoveMemberBt.UseVisualStyleBackColor = true;
+            RemoveMemberBt.Click += RemoveMemberBt_Click;
             // 
             // label5
             // 
@@ -183,6 +185,7 @@
             SearchNameBt.TabIndex = 2;
             SearchNameBt.Text = "Search";
             SearchNameBt.UseVisualStyleBackColor = true;
+            SearchNameBt.Click += SearchNameBt_Click;
             // 
             // TboxNameS
             // 
@@ -220,6 +223,7 @@
             SearchMemberIDBt.TabIndex = 2;
             SearchMemberIDBt.Text = "Search";
             SearchMemberIDBt.UseVisualStyleBackColor = true;
+            SearchMemberIDBt.Click += SearchMemberIDBt_Click;
             // 
             // TboxMemberIDS
             // 
