@@ -61,6 +61,7 @@ namespace LibraraySystem
                 }
             }
 
+            
             LabelBookTitle.Text = book.Title;
             LabelAuthor.Text = book.Author;
             TboxDescription.Text = book.Description;
@@ -84,9 +85,19 @@ namespace LibraraySystem
             }
             else
             {
-                book.RemoveBook();
-                MessageBox.Show("Book removed successfully", "Remove Book");
-                ResetUI();
+                string status = Book.GetBookStatus(book.Id);
+                if(status == "L")
+                {
+                    MessageBox.Show("Cannot Remove Loaned Book", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    book.RemoveBook();
+                    MessageBox.Show("Book removed successfully", "Remove Book");
+                    ResetUI();
+                }
+               
             }
         }
 

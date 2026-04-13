@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Media.Playback;
 
 namespace LibraraySystem
 {
@@ -105,7 +106,7 @@ namespace LibraraySystem
 
         public static DataSet FindBooks(string name)
         {
-            string sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION FROM Books " +
+            string sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION, STATUS FROM Books " +
                 "WHERE BOOKTITLE LIKE :name " +
                 "AND ISDELETED = 'N' " +
                 "ORDER BY BOOKTITLE";
@@ -120,6 +121,7 @@ namespace LibraraySystem
         public static Book GetBook(int id)
         {
 
+           
             string sqlQuery = "SELECT * FROM Books WHERE BOOKID = :id";
 
             OracleParameter[] parameters =
@@ -182,7 +184,6 @@ namespace LibraraySystem
             string sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION FROM Books " +
                 "WHERE BOOKTITLE LIKE :name " +
                 "AND STATUS = 'A' " +
-                "AND STATUS = 'A' " +
                 "AND ISDELETED = 'N' " +
                 "ORDER BY BOOKTITLE";
 
@@ -191,6 +192,24 @@ namespace LibraraySystem
                 new OracleParameter(":name","%" + name + "%")
             };
             return Database.ExecuteMultiRowQuery(sql, parameters);
+        }
+
+        public static string GetBookStatus(int id)
+        {
+            string status = "";
+
+            string sqlQuery = "SELECT STATUS FROM Books WHERE BOOKID = :id";
+
+            OracleParameter[] parameters =
+            {
+                new OracleParameter(":id",id)
+            };
+            OracleDataReader dr = Database.ExecuteSingleRowQuery(sqlQuery, parameters);
+            dr.Read();
+
+            status = dr.GetString("STATUS");
+
+            return status;
         }
     }
        
