@@ -9,19 +9,19 @@ namespace LibraraySystem
     class Loan
     {
         public int LoanID {  get; set; }
-        public Member Member { get; set; }
-        public Book Book { get; set; }
+        public int MemID { get; set; }
+        public int BookID { get; set; }
         public DateTime StartDate {  get; set; }
         public DateTime DueDate {  get; set; }
         public DateTime? ReturnedDate {  get; set; }
 
        
 
-        public Loan(int loanID, Member member, Book book, DateTime startDate, DateTime dueDate)
+        public Loan(int loanID, int memberID, int bookID, DateTime startDate, DateTime dueDate)
         {
             LoanID = loanID;
-            Member = member;
-            Book = book;
+            MemID = memberID;
+            BookID = bookID;
             StartDate = startDate;
             DueDate = dueDate;
             ReturnedDate = null;
@@ -32,25 +32,9 @@ namespace LibraraySystem
             string str = "Loan Details:\n\n";
 
             str += "Loan ID: " + LoanID +
-                   "\n\nMember Details:\n";
-
-            if (Member != null) {
-                str += Member.ToString();
-            }
-            else
-            {
-                str += "\nNo Member Found";
-            }
-            str += "\n\nBook Details:\n";
-
-            if (Book != null) {
-                str += Book.ToString();
-            }
-            else
-            {
-                str += "No Book Found";
-            }
-            str +="\nLoan Start Date: " + StartDate +
+                "\nMember ID: " + MemID + 
+                "\nBook ID: " + BookID +
+                "\nLoan Start Date: " + StartDate +
                 "\nLoan Due Date: " + DueDate +
                 "\nLoan Returned Date: " + ReturnedDate;
 

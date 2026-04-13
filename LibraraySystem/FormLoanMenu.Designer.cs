@@ -52,6 +52,7 @@
             LoanBookBT.TabIndex = 9;
             LoanBookBT.Text = "Loan Book";
             LoanBookBT.UseVisualStyleBackColor = true;
+            LoanBookBT.Click += LoanBookBT_Click;
             // 
             // label1
             // 

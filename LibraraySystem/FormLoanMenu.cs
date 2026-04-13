@@ -16,5 +16,11 @@ namespace LibraraySystem
         {
             InitializeComponent();
         }
+
+        private void LoanBookBT_Click(object sender, EventArgs e)
+        {
+            FormLoanBook formLoanBook = new FormLoanBook();
+            formLoanBook.ShowDialog();
+        }
     }
 }
