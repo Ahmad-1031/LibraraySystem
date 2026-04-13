@@ -213,5 +213,43 @@ namespace LibraraySystem
 
             return true;
         }
+
+        public static bool ValidateLoan(string bookid,string memberid, DateTime startdate, DateTime duedate)
+        {
+            if (bookid == "No Book ID")
+            {
+                MessageBox.Show("No Book Selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (memberid == "No Member ID")
+            {
+                MessageBox.Show("No Member Selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(startdate.Date < DateTime.Today)
+            {
+                MessageBox.Show("Start Date must not be in the past", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (startdate.Date > DateTime.Today.AddDays(14)) {
+                MessageBox.Show("Start Date must not exceed 2 weeks from today", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (duedate.Date < startdate.Date) {
+                MessageBox.Show("Due Date Must be after Start Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if(duedate > startdate.Date.AddDays(14))
+            {
+                MessageBox.Show("Loan Cannot be longer than 2 weeks!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
     }
 }

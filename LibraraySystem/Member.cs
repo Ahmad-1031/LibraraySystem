@@ -29,7 +29,7 @@ namespace LibraraySystem
         }
 
         public override string ToString() {
-            String str = "Member Details:\n ";
+            String str = "Member Details:\n\n";
 
             str += $"Member ID: M00{MemID}" + "\n" +
                    $"First Name: {Fname}" + "\n" +

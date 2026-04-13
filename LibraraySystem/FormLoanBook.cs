@@ -21,6 +21,7 @@ namespace LibraraySystem
             grpMemberName.Visible = false;
             grpBookDetails.Visible = false;
             grbMemberDetails.Visible = false;
+            grpLoanDetails.Visible = false;
 
 
 
@@ -29,10 +30,12 @@ namespace LibraraySystem
 
         private Book book;
         private Member member;
+        private Loan loan;
 
         private void FormLoanBook_Load(object sender, EventArgs e)
         {
 
+            LabelLoanID.Text = Loan.NextLoanID().ToString();
         }
 
         private void OPMemID_Click(object sender, EventArgs e)
@@ -49,7 +52,7 @@ namespace LibraraySystem
 
         private void SearchBt_Click(object sender, EventArgs e)
         {
-            grdBooks.DataSource = Book.FindBooks(TBoxSearchB.Text).Tables[0];
+            grdBooks.DataSource = Book.FindBooksForLoan(TBoxSearchB.Text).Tables[0];
             if (grdBooks.Rows.Count == 1)
             {
                 MessageBox.Show("No Data Found!");
@@ -134,8 +137,121 @@ namespace LibraraySystem
             LabelBookTitle.Text = book.Title;
             LabelAuthor.Text = book.Author;
             TboxDescription.Text = book.Description;
+            LabelBookID.Text = BookID.ToString();
 
             grpBookDetails.Visible = true;
+            grpLoanDetails.Visible = true;
+        }
+
+        private void grdMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int MemID = Convert.ToInt32(grdMembers.Rows[grdMembers.CurrentCell.RowIndex].Cells[0].Value);
+
+            member = Member.GetMember(MemID);
+
+            LabelFirstName.Text = member.Fname;
+            LabelSurname.Text = member.Sname;
+            LabelPhone.Text = member.Phone.ToString();
+            LabelEmail.Text = member.Email;
+
+            LabelMemberID.Text = "M00" + MemID.ToString();
+
+            grbMemberDetails.Visible = true;
+            grpLoanDetails.Visible = true;
+
+
+        }
+
+        private void LoanBookBT_Click(object sender, EventArgs e)
+        {
+            string loanid = LabelLoanID.Text;
+            string bookid = LabelBookID.Text;
+            string memberid = LabelMemberID.Text;
+            DateTime startdate = DTPstartDate.Value;
+            DateTime duedate = DTPdueDate.Value;
+
+            if (!Validation.ValidateLoan(bookid, memberid, startdate, duedate)) {
+                return;
+            }
+
+            if(Loan.NumOfLoans(int.Parse(memberid.Substring(3))) > 5)
+            {
+                MessageBox.Show("Member cannot have more than 5 Loans", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            loan = new Loan();
+            loan.LoanID = int.Parse(loanid);
+            book = Book.GetBook(int.Parse(bookid));
+            member = Member.GetMember(int.Parse(memberid.Substring(3)));
+
+            loan.BookID = book.Id;
+            loan.MemID = member.MemID;
+            loan.StartDate = startdate.Date;
+            loan.DueDate = duedate.Date;
+
+            DialogResult result = MessageBox.Show(
+                    "Are you Sure you want to Add Loan?\n\n" + loan.ToString() + "\n\n" + member.ToString() + "\n\n" + book.ToString(),
+                    "Confirm Loan",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            else
+            {
+                loan.AddLoan();
+                MessageBox.Show("Loan Added Successfully", "Loan Added",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                ResetUI();
+
+            }
+
+        }
+
+        public void ResetUI()
+        {
+
+            //Loan Details GroupBox Resets
+            grpLoanDetails.Visible = false;
+            DTPdueDate.Value = DateTime.Today;
+            DTPstartDate.Value = DateTime.Today;
+            LabelBookID.Text = "No Book ID";
+            LabelMemberID.Text = "No Member ID";
+            LabelLoanID.Text = Loan.NextLoanID().ToString();
+
+            //Book Details GroupBox Resets
+            grpBookDetails.Visible = false;
+            TboxDescription.Text = string.Empty;
+            LabelGenre.Text = string.Empty;
+            LabelAuthor.Text = string.Empty;
+            LabelBookTitle.Text = string.Empty;
+
+            //Member Details GroupBox Resets
+            grbMemberDetails.Visible = false;
+            LabelEmail.Text = string.Empty;
+            LabelPhone.Text = string.Empty;
+            LabelSurname.Text = string.Empty;
+            LabelFirstName.Text = string.Empty;
+
+            //Books Grid View Reset
+            grdBooks.Visible = false;
+            grdBooks.DataSource = null;
+
+            //Members Grid View Reset
+            grdMembers.Visible = false;
+            grdMembers.DataSource = null;
+
+            //Member Name GroupBox Resets
+            grpMemberName.Visible= false;
+            TboxNameS.Text = string.Empty;
+
+            //Member MemID GroupBOx Resets
+            grpMemberID.Visible= false;
+            TboxMemberIDS.Text = string.Empty;
+
         }
     }
 }

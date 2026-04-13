@@ -103,9 +103,9 @@ namespace LibraraySystem
             return str;
         }
 
-        public static DataSet FindBooks(String name)
+        public static DataSet FindBooks(string name)
         {
-            String sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION FROM Books " +
+            string sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION FROM Books " +
                 "WHERE BOOKTITLE LIKE :name " +
                 "AND ISDELETED = 'N' " +
                 "ORDER BY BOOKTITLE";
@@ -175,6 +175,22 @@ namespace LibraraySystem
 
             Database.ExecuteNonQuery(sqlQuery,parameters);
 
+        }
+
+        public static DataSet FindBooksForLoan(String name)
+        {
+            string sql = "SELECT BOOKID, GENRECODE, BOOKTITLE, AUTHOR, DESCRIPTION FROM Books " +
+                "WHERE BOOKTITLE LIKE :name " +
+                "AND STATUS = 'A' " +
+                "AND STATUS = 'A' " +
+                "AND ISDELETED = 'N' " +
+                "ORDER BY BOOKTITLE";
+
+            OracleParameter[] parameters = {
+
+                new OracleParameter(":name","%" + name + "%")
+            };
+            return Database.ExecuteMultiRowQuery(sql, parameters);
         }
     }
        
