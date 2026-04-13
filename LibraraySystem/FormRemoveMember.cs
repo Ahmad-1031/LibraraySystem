@@ -118,9 +118,20 @@ namespace LibraraySystem
             }
             else
             {
-                DeleteMember.RemoveMember();
-                MessageBox.Show("Member removed successfully", "Remove Book");
-                ResetUI();
+                int no_loans = Loan.NumOfLoans(DeleteMember.MemID);
+                if(no_loans > 0)
+                {
+                    MessageBox.Show("Member cannot be removed due to unreturned loans", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    DeleteMember.RemoveMember();
+                    MessageBox.Show("Member removed successfully", "Remove Book");
+                    ResetUI();
+
+                }
+                    
                 
             }
         }
