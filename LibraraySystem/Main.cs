@@ -23,5 +23,11 @@ namespace LibraraySystem
             FormMemberMenu formMemberMenu = new FormMemberMenu();
             formMemberMenu.ShowDialog();
         }
+
+        private void loanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLoanMenu formLoanMenu = new FormLoanMenu();
+            formLoanMenu.ShowDialog();
+        }
     }
 }

@@ -64,6 +64,7 @@
             loanToolStripMenuItem.Name = "loanToolStripMenuItem";
             loanToolStripMenuItem.Size = new Size(45, 20);
             loanToolStripMenuItem.Text = "Loan";
+            loanToolStripMenuItem.Click += loanToolStripMenuItem_Click;
             // 
             // adminToolStripMenuItem
             // 
