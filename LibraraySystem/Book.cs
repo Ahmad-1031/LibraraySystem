@@ -51,14 +51,39 @@ namespace LibraraySystem
             return nextID;
         }
 
-        public static bool BookExists(string title, string author)
+        public static bool BookExistsForInsert(string title, string author)
         {
             string sql = "SELECT COUNT(*) FROM Books WHERE BOOKTITLE = :title AND AUTHOR = :author";
 
             OracleParameter[] parameters = {
 
+            new OracleParameter(":title",title.Trim()),
+            new OracleParameter(":author",author.Trim())
+            };
+
+            int count = Convert.ToInt32(Database.ExecuteScalar(sql, parameters));
+            if (count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public static bool BookExistsForUpdate(string title, string author, int id)
+        {
+            string sql = "SELECT COUNT(*) FROM Books " +
+                "WHERE BOOKTITLE = :title AND AUTHOR = :author " +
+                "AND BOOKID != :id";
+
+            OracleParameter[] parameters = {
+
             new OracleParameter(":title",title),
-            new OracleParameter(":author",author)
+            new OracleParameter(":author",author),
+            new OracleParameter(":id",id)
             };
 
             int count = Convert.ToInt32(Database.ExecuteScalar(sql, parameters));
@@ -148,9 +173,9 @@ namespace LibraraySystem
 
 
             String sqlQuery = "UPDATE BOOKS SET " +
-                "BOOKTITLE = :BookTitle, " +
-                "AUTHOR = :Author, " +
-                "DESCRIPTION = :Description, " +
+                "BOOKTITLE = TRIM(:BookTitle), " +
+                "AUTHOR = TRIM(:Author), " +
+                "DESCRIPTION = TRIM(:Description), " +
                 "GENRECODE = :Genre " +
                 "WHERE BOOKID = :id";
 

@@ -18,7 +18,7 @@ namespace LibraraySystem
         }
 
         public static DataSet getGenres() {
-            String sqlQuery = "SELECT * FROM Genres ORDER BY GenreCode";
+            String sqlQuery = "SELECT * FROM GENRES ORDER BY GENRECODE";
 
             return Database.ExecuteMultiRowQuery(sqlQuery);
         }

@@ -101,11 +101,17 @@ namespace LibraraySystem
                 return;
             }
 
+            if (Book.BookExistsForUpdate(title.Trim(), author.Trim(), book.Id))
+            {
+                MessageBox.Show("Book Already Exists - No duplicate books allowed","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             String UpdatedGenre = CBgenre.Items[genre].ToString();
 
-            book.Title = title;
-            book.Author = author;
-            book.Description = description;
+            book.Title = title.Trim();
+            book.Author = author.Trim();
+            book.Description = description.Trim();
             book.Genre = UpdatedGenre.Substring(0, 2);
             //MessageBox.Show(book.Id.ToString());
 

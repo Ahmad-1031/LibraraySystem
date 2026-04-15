@@ -128,7 +128,7 @@ namespace LibraraySystem
 
             member.Fname = Fname;
             member.Sname = Sname;
-            member.Phone = int.Parse(Phone);
+            member.Phone = Phone;
             member.Email = Email;
 
             member.UpdateMember();

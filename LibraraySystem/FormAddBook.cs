@@ -62,6 +62,8 @@ namespace LibraraySystem
 
             DataSet ds = Genres.getGenres();
 
+
+
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) {
                 CBgenre.Items.Add(ds.Tables[0].Rows[i][0] + " - " + ds.Tables[0].Rows[i][1]);
                 
@@ -85,7 +87,7 @@ namespace LibraraySystem
                 return;
             }
 
-            if(Book.BookExists(title, author))
+            if(Book.BookExistsForInsert(title.Trim(), author.Trim()))
             {
                 MessageBox.Show("Book Already Exists!", "Duplicate Book");
                 return;
@@ -93,7 +95,7 @@ namespace LibraraySystem
 
             string selectedGenre = CBgenre.SelectedItem.ToString().Substring(0, 2);
             
-            Book b1 = new Book(Convert.ToInt32(TBoxBookID.Text),title,author,description,selectedGenre);
+            Book b1 = new Book(Convert.ToInt32(TBoxBookID.Text),title.Trim(),author.Trim(),description.Trim(),selectedGenre);
             b1.AddBook();
             MessageBox.Show("\n" + b1.ToString(), "Book Added Successfully");
             ResetUI();

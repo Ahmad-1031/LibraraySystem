@@ -12,13 +12,13 @@ namespace LibraraySystem
     class Member
     {
         public int MemID { get; set; }
-        public String Fname {  get; set; }
-        public String Sname {  get; set; }
-        public int Phone {  get; set; }
-        public String Email {  get; set; }
+        public string Fname {  get; set; }
+        public string Sname {  get; set; }
+        public string Phone {  get; set; }
+        public string Email {  get; set; }
         public Char IsDeleted {  get; set; }
 
-        public Member(int id, String fname, String sname, int phone, String email)
+        public Member(int id, String fname, String sname, string phone, String email)
         {
             MemID = id;
             Fname = fname;
@@ -58,7 +58,7 @@ namespace LibraraySystem
             return nextID;
         }
 
-        public static bool MemberExists(int phone, String email) {
+        public static bool MemberExists(string phone, string email) {
             string sql = "SELECT COUNT(*) FROM MEMBERS WHERE PHONE = :phone OR EMAIL = :email";
 
             OracleParameter[] parameters = {
@@ -135,7 +135,7 @@ namespace LibraraySystem
 
             string Fname = dr.GetString("FNAME");
             string Sname = dr.GetString("SNAME");
-            int Phone = int.Parse(dr.GetString("PHONE"));
+            string Phone = dr.GetString("PHONE");
             string Email = dr.GetString("EMAIL");
 
             dr.Close();

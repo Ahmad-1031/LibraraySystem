@@ -24,7 +24,7 @@ namespace LibraraySystem
        
 
         private void FormAddMember_Load(object sender, EventArgs e) {
-            member = new Member(0, "", "", 0, "");
+            member = new Member(0, "", "", "", "");
             member.MemID = Member.NextMemID();
             TBoxMemID.Text = "M00" + member.MemID.ToString();
             
@@ -50,7 +50,7 @@ namespace LibraraySystem
                 return;
             }
 
-            if (Member.MemberExists(int.Parse(Phone), Email))
+            if (Member.MemberExists(Phone, Email))
             {
                 MessageBox.Show("Member Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -58,7 +58,7 @@ namespace LibraraySystem
 
             member.Fname = Fname;
             member.Sname = Sname;
-            member.Phone = int.Parse(Phone);
+            member.Phone = Phone;
             member.Email = Email;
             member.AddMember();
 
