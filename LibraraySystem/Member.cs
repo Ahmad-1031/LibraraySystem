@@ -58,13 +58,37 @@ namespace LibraraySystem
             return nextID;
         }
 
-        public static bool MemberExists(string phone, string email) {
-            string sql = "SELECT COUNT(*) FROM MEMBERS WHERE PHONE = :phone OR EMAIL = :email";
+        public static bool MemberExistsForInsert(string phone, string email) {
+            string sql = "SELECT COUNT(*) FROM MEMBERS WHERE PHONE = :phone AND EMAIL = :email";
 
             OracleParameter[] parameters = {
 
             new OracleParameter(":phone",phone),
             new OracleParameter(":email",email)
+            };
+
+            int count = Convert.ToInt32(Database.ExecuteScalar(sql, parameters));
+            if (count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool MemberExistsForUpdate(string phone, string email,int id)
+        {
+            string sql = "SELECT COUNT(*) FROM MEMBERS " +
+                "WHERE PHONE = :phone AND EMAIL = :email " +
+                "AND MEMID != :id";
+
+            OracleParameter[] parameters = {
+
+            new OracleParameter(":phone",phone),
+            new OracleParameter(":email",email),
+            new OracleParameter(":id",id)
             };
 
             int count = Convert.ToInt32(Database.ExecuteScalar(sql, parameters));

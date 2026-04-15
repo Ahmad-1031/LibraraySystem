@@ -50,16 +50,16 @@ namespace LibraraySystem
                 return;
             }
 
-            if (Member.MemberExists(Phone, Email))
+            if (Member.MemberExistsForInsert(Phone.Trim(), Email.Trim()))
             {
                 MessageBox.Show("Member Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            member.Fname = Fname;
-            member.Sname = Sname;
-            member.Phone = Phone;
-            member.Email = Email;
+            member.Fname = Fname.Trim();
+            member.Sname = Sname.Trim();
+            member.Phone = Phone.Trim();
+            member.Email = Email.Trim();
             member.AddMember();
 
             MessageBox.Show("Member Added Successfully","Success", MessageBoxButtons.OK,MessageBoxIcon.Information);

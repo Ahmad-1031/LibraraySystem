@@ -126,10 +126,15 @@ namespace LibraraySystem
                 return;
             }
 
-            member.Fname = Fname;
-            member.Sname = Sname;
-            member.Phone = Phone;
-            member.Email = Email;
+            if (Member.MemberExistsForUpdate(Phone.Trim(), Email.Trim(), member.MemID)) {
+                MessageBox.Show("Member Already Exists - No Duplicate Members Allowed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            member.Fname = Fname.Trim();
+            member.Sname = Sname.Trim();
+            member.Phone = Phone.Trim();
+            member.Email = Email.Trim();
 
             member.UpdateMember();
             ResetUI();
