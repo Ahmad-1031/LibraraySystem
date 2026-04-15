@@ -1,6 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +10,14 @@ namespace LibraraySystem
 {
     class Loan
     {
-        public int LoanID {  get; set; }
+        public int LoanID { get; set; }
         public int MemID { get; set; }
         public int BookID { get; set; }
-        public DateTime StartDate {  get; set; }
-        public DateTime DueDate {  get; set; }
-        public DateTime? ReturnedDate {  get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime DueDate { get; set; }
+        public DateTime? ReturnedDate { get; set; }
 
-       
+
 
         public Loan()
         {
@@ -42,7 +43,7 @@ namespace LibraraySystem
             string str = "Loan Details:\n\n";
 
             str += "Loan ID: " + LoanID +
-                "\nMember ID: " + MemID + 
+                "\nMember ID: " + MemID +
                 "\nBook ID: " + BookID +
                 "\nLoan Start Date: " + StartDate +
                 "\nLoan Due Date: " + DueDate +
@@ -80,11 +81,11 @@ namespace LibraraySystem
             };
 
             int number;
-            OracleDataReader dr =  Database.ExecuteSingleRowQuery(sql, parameters);
+            OracleDataReader dr = Database.ExecuteSingleRowQuery(sql, parameters);
             dr.Read();
 
             number = dr.GetInt32(0);
-            
+
 
             return number;
         }
@@ -113,16 +114,43 @@ namespace LibraraySystem
                 new OracleParameter(":returneddate",ReturnedDate)
 
             };
-           
+
             Database.ExecuteNonQuery(sql, parameters);
 
-        
-
-
-            
 
 
         }
 
+
+        public static DataSet FindAllLoan(int id)
+        {
+            string sql = "SELECT * FROM LOANS WHERE MEMID = :id";
+
+            OracleParameter[] parameters = {
+                new OracleParameter(":id",id)
+            };
+
+            return Database.ExecuteMultiRowQuery(sql, parameters);
+
+
+        }
+
+        public static Loan GetLoan(int loanid) {
+
+            string sql = "SELECT * FROM LOANS WHERE LOANID = :loanid";
+            OracleParameter[] parameters = {
+                new OracleParameter(":loanid",loanid)
+            };
+            
+            OracleDataReader dr = Database.ExecuteSingleRowQuery(sql, parameters);
+            dr.Read();
+
+            int memID = int.Parse(dr.GetString("MEMID"));
+            int bookID = int.Parse(dr.GetString("BOOKID"));
+            DateTime startDate = DateTime.Parse(dr.GetString("STARTDATE"));
+            DateTime dueDate = DateTime.Parse(dr.GetString("DUEDATE"));
+
+            return new Loan(loanid,memID,bookID,startDate,dueDate);
+        }
     }
 }

@@ -24,6 +24,8 @@ namespace LibraraySystem
 
         }
 
+        private Loan updateLoan;
+
         private void FormReturnBook_Load(object sender, EventArgs e)
         {
 
@@ -39,6 +41,92 @@ namespace LibraraySystem
         {
             grpMemberName.Visible = true;
             grpMemberID.Visible = false;
+        }
+
+        private void SearchMemberIDBt_Click(object sender, EventArgs e)
+        {
+            string id = TboxMemberIDS.Text.Trim().ToUpper();
+
+            if (!Validation.ValidMemberID(id))
+            {
+                MessageBox.Show("Please Re-enter", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int intID = int.Parse(id.Substring(2));
+
+
+
+            grdMembers.DataSource = null;
+            grdMembers.DataSource = Member.FindMemberByID(intID).Tables[0];
+
+            if (grdMembers.Rows.Count == 1)
+            {
+                MessageBox.Show("No Member Found!");
+                grdMembers.DataSource = null;
+                grdMembers.Visible = false;
+                TboxNameS.Focus();
+                return;
+            }
+
+            grdMembers.Visible = true;
+        }
+
+        private void SearchNameBt_Click(object sender, EventArgs e)
+        {
+            string name = TboxNameS.Text;
+            if (!Validation.ValidNameSearch(name))
+            {
+                MessageBox.Show("Please Re-enter", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            grdMembers.DataSource = null;
+            grdMembers.DataSource = Member.FindMemberByName(name).Tables[0];
+
+            if (grdMembers.Rows.Count == 1)
+            {
+                MessageBox.Show("No Member Found!");
+                grdMembers.DataSource = null;
+                grdMembers.Visible = false;
+                TboxNameS.Focus();
+                return;
+            }
+            grdMembers.Visible = true;
+        }
+
+        private void grdMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int MemberID = Convert.ToInt32(grdMembers.Rows[grdMembers.CurrentCell.RowIndex].Cells[0].Value);
+
+
+            grdLoans.DataSource = null;
+            grdLoans.DataSource = Loan.FindAllLoan(MemberID).Tables[0];
+
+            if (grdLoans.Rows.Count == 1)
+            {
+                MessageBox.Show("No Loans Found", "No Loans", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                grdLoans.Visible = true;
+            }
+
+        }
+
+        private void grdLoans_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int LoanID = Convert.ToInt32(grdLoans.Rows[grdLoans.CurrentCell.RowIndex].Cells[0].Value);
+
+
+            updateLoan = Loan.GetLoan(LoanID);
+
+            LabelLoanID.Text = updateLoan.LoanID.ToString();
+            LabelMemberID.Text = updateLoan.MemID.ToString();
+            LabelBookID.Text = updateLoan.BookID.ToString();
+            LabelStartDate.Text = updateLoan.StartDate.ToString();
+            LabelDueDate.Text = updateLoan.DueDate.ToString();
         }
     }
 }

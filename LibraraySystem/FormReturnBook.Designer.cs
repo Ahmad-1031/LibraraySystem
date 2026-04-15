@@ -45,9 +45,9 @@
             ReturnLoanBt = new Button();
             dateTimePicker1 = new DateTimePicker();
             label11 = new Label();
-            label10 = new Label();
+            LabelDueDate = new Label();
             label9 = new Label();
-            label8 = new Label();
+            LabelStartDate = new Label();
             label6 = new Label();
             LabelBookID = new Label();
             label7 = new Label();
@@ -73,6 +73,7 @@
             grdMembers.Name = "grdMembers";
             grdMembers.Size = new Size(534, 209);
             grdMembers.TabIndex = 22;
+            grdMembers.CellClick += grdMembers_CellClick;
             // 
             // grpMemberName
             // 
@@ -94,6 +95,7 @@
             SearchNameBt.TabIndex = 2;
             SearchNameBt.Text = "Search";
             SearchNameBt.UseVisualStyleBackColor = true;
+            SearchNameBt.Click += SearchNameBt_Click;
             // 
             // TboxNameS
             // 
@@ -131,6 +133,7 @@
             SearchMemberIDBt.TabIndex = 2;
             SearchMemberIDBt.Text = "Search";
             SearchMemberIDBt.UseVisualStyleBackColor = true;
+            SearchMemberIDBt.Click += SearchMemberIDBt_Click;
             // 
             // TboxMemberIDS
             // 
@@ -187,15 +190,16 @@
             grdLoans.Name = "grdLoans";
             grdLoans.Size = new Size(534, 212);
             grdLoans.TabIndex = 23;
+            grdLoans.CellClick += grdLoans_CellClick;
             // 
             // grbLoanDetails
             // 
             grbLoanDetails.Controls.Add(ReturnLoanBt);
             grbLoanDetails.Controls.Add(dateTimePicker1);
             grbLoanDetails.Controls.Add(label11);
-            grbLoanDetails.Controls.Add(label10);
+            grbLoanDetails.Controls.Add(LabelDueDate);
             grbLoanDetails.Controls.Add(label9);
-            grbLoanDetails.Controls.Add(label8);
+            grbLoanDetails.Controls.Add(LabelStartDate);
             grbLoanDetails.Controls.Add(label6);
             grbLoanDetails.Controls.Add(LabelBookID);
             grbLoanDetails.Controls.Add(label7);
@@ -235,14 +239,14 @@
             label11.TabIndex = 10;
             label11.Text = "Return Date : ";
             // 
-            // label10
+            // LabelDueDate
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(128, 138);
-            label10.Name = "label10";
-            label10.Size = new Size(74, 15);
-            label10.TabIndex = 9;
-            label10.Text = "No Due Date";
+            LabelDueDate.AutoSize = true;
+            LabelDueDate.Location = new Point(128, 138);
+            LabelDueDate.Name = "LabelDueDate";
+            LabelDueDate.Size = new Size(74, 15);
+            LabelDueDate.TabIndex = 9;
+            LabelDueDate.Text = "No Due Date";
             // 
             // label9
             // 
@@ -253,14 +257,14 @@
             label9.TabIndex = 8;
             label9.Text = "Due Date : ";
             // 
-            // label8
+            // LabelStartDate
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(128, 114);
-            label8.Name = "label8";
-            label8.Size = new Size(77, 15);
-            label8.TabIndex = 7;
-            label8.Text = "No Start Date";
+            LabelStartDate.AutoSize = true;
+            LabelStartDate.Location = new Point(128, 114);
+            LabelStartDate.Name = "LabelStartDate";
+            LabelStartDate.Size = new Size(77, 15);
+            LabelStartDate.TabIndex = 7;
+            LabelStartDate.Text = "No Start Date";
             // 
             // label6
             // 
@@ -398,9 +402,9 @@
         private Label label7;
         private Label LabelBookID;
         private Label label11;
-        private Label label10;
+        private Label LabelDueDate;
         private Label label9;
-        private Label label8;
+        private Label LabelStartDate;
         private Label label6;
         private Button ReturnLoanBt;
         private DateTimePicker dateTimePicker1;
