@@ -42,34 +42,36 @@
             label4 = new Label();
             grdLoans = new DataGridView();
             grbLoanDetails = new GroupBox();
-            label1 = new Label();
-            LabelLoanID = new Label();
-            label5 = new Label();
-            LabelMemberID = new Label();
-            label7 = new Label();
-            LabelBookID = new Label();
-            label6 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
-            dateTimePicker1 = new DateTimePicker();
             ReturnLoanBt = new Button();
-            groupBox1 = new GroupBox();
+            dateTimePicker1 = new DateTimePicker();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
+            label6 = new Label();
+            LabelBookID = new Label();
+            label7 = new Label();
+            LabelMemberID = new Label();
+            label5 = new Label();
+            LabelLoanID = new Label();
+            label1 = new Label();
+            grbSelectLoan = new GroupBox();
+            grbSelectMember = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)grdMembers).BeginInit();
             grpMemberName.SuspendLayout();
             grpMemberID.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdLoans).BeginInit();
             grbLoanDetails.SuspendLayout();
-            groupBox1.SuspendLayout();
+            grbSelectLoan.SuspendLayout();
+            grbSelectMember.SuspendLayout();
             SuspendLayout();
             // 
             // grdMembers
             // 
             grdMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdMembers.Location = new Point(451, 71);
+            grdMembers.Location = new Point(16, 22);
             grdMembers.Name = "grdMembers";
-            grdMembers.Size = new Size(558, 209);
+            grdMembers.Size = new Size(534, 209);
             grdMembers.TabIndex = 22;
             // 
             // grpMemberName
@@ -155,6 +157,7 @@
             OPName.TabIndex = 19;
             OPName.Text = "Name";
             OPName.UseVisualStyleBackColor = true;
+            OPName.Click += OPName_Click;
             // 
             // OPMemID
             // 
@@ -165,6 +168,7 @@
             OPMemID.TabIndex = 18;
             OPMemID.Text = "Member ID";
             OPMemID.UseVisualStyleBackColor = true;
+            OPMemID.Click += OPMemID_Click;
             // 
             // label4
             // 
@@ -206,95 +210,21 @@
             grbLoanDetails.TabStop = false;
             grbLoanDetails.Text = " Loan Details";
             // 
-            // label1
+            // ReturnLoanBt
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(35, 41);
-            label1.Name = "label1";
-            label1.Size = new Size(53, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Loan ID :";
+            ReturnLoanBt.Location = new Point(140, 203);
+            ReturnLoanBt.Name = "ReturnLoanBt";
+            ReturnLoanBt.Size = new Size(134, 22);
+            ReturnLoanBt.TabIndex = 12;
+            ReturnLoanBt.Text = "Return Loan";
+            ReturnLoanBt.UseVisualStyleBackColor = true;
             // 
-            // LabelLoanID
+            // dateTimePicker1
             // 
-            LabelLoanID.AutoSize = true;
-            LabelLoanID.Location = new Point(128, 41);
-            LabelLoanID.Name = "LabelLoanID";
-            LabelLoanID.Size = new Size(99, 15);
-            LabelLoanID.TabIndex = 1;
-            LabelLoanID.Text = "No Loan Selected";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(35, 65);
-            label5.Name = "label5";
-            label5.Size = new Size(75, 15);
-            label5.TabIndex = 2;
-            label5.Text = "Member ID : ";
-            // 
-            // LabelMemberID
-            // 
-            LabelMemberID.AutoSize = true;
-            LabelMemberID.Location = new Point(128, 65);
-            LabelMemberID.Name = "LabelMemberID";
-            LabelMemberID.Size = new Size(85, 15);
-            LabelMemberID.TabIndex = 3;
-            LabelMemberID.Text = "No Member ID";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(36, 90);
-            label7.Name = "label7";
-            label7.Size = new Size(54, 15);
-            label7.TabIndex = 4;
-            label7.Text = "Book ID :";
-            // 
-            // LabelBookID
-            // 
-            LabelBookID.AutoSize = true;
-            LabelBookID.Location = new Point(128, 90);
-            LabelBookID.Name = "LabelBookID";
-            LabelBookID.Size = new Size(67, 15);
-            LabelBookID.TabIndex = 5;
-            LabelBookID.Text = "No Book ID";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(36, 114);
-            label6.Name = "label6";
-            label6.Size = new Size(67, 15);
-            label6.TabIndex = 6;
-            label6.Text = "Start Date : ";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(128, 114);
-            label8.Name = "label8";
-            label8.Size = new Size(77, 15);
-            label8.TabIndex = 7;
-            label8.Text = "No Start Date";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(37, 138);
-            label9.Name = "label9";
-            label9.Size = new Size(64, 15);
-            label9.TabIndex = 8;
-            label9.Text = "Due Date : ";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(128, 138);
-            label10.Name = "label10";
-            label10.Size = new Size(74, 15);
-            label10.TabIndex = 9;
-            label10.Text = "No Due Date";
+            dateTimePicker1.Location = new Point(128, 164);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(205, 23);
+            dateTimePicker1.TabIndex = 11;
             // 
             // label11
             // 
@@ -305,40 +235,124 @@
             label11.TabIndex = 10;
             label11.Text = "Return Date : ";
             // 
-            // dateTimePicker1
+            // label10
             // 
-            dateTimePicker1.Location = new Point(128, 164);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(205, 23);
-            dateTimePicker1.TabIndex = 11;
+            label10.AutoSize = true;
+            label10.Location = new Point(128, 138);
+            label10.Name = "label10";
+            label10.Size = new Size(74, 15);
+            label10.TabIndex = 9;
+            label10.Text = "No Due Date";
             // 
-            // ReturnLoanBt
+            // label9
             // 
-            ReturnLoanBt.Location = new Point(140, 203);
-            ReturnLoanBt.Name = "ReturnLoanBt";
-            ReturnLoanBt.Size = new Size(134, 22);
-            ReturnLoanBt.TabIndex = 12;
-            ReturnLoanBt.Text = "Return Loan";
-            ReturnLoanBt.UseVisualStyleBackColor = true;
+            label9.AutoSize = true;
+            label9.Location = new Point(37, 138);
+            label9.Name = "label9";
+            label9.Size = new Size(64, 15);
+            label9.TabIndex = 8;
+            label9.Text = "Due Date : ";
             // 
-            // groupBox1
+            // label8
             // 
-            groupBox1.Controls.Add(grdLoans);
-            groupBox1.Location = new Point(451, 299);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(563, 249);
-            groupBox1.TabIndex = 25;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Select Loan";
+            label8.AutoSize = true;
+            label8.Location = new Point(128, 114);
+            label8.Name = "label8";
+            label8.Size = new Size(77, 15);
+            label8.TabIndex = 7;
+            label8.Text = "No Start Date";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(36, 114);
+            label6.Name = "label6";
+            label6.Size = new Size(67, 15);
+            label6.TabIndex = 6;
+            label6.Text = "Start Date : ";
+            // 
+            // LabelBookID
+            // 
+            LabelBookID.AutoSize = true;
+            LabelBookID.Location = new Point(128, 90);
+            LabelBookID.Name = "LabelBookID";
+            LabelBookID.Size = new Size(67, 15);
+            LabelBookID.TabIndex = 5;
+            LabelBookID.Text = "No Book ID";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(36, 90);
+            label7.Name = "label7";
+            label7.Size = new Size(54, 15);
+            label7.TabIndex = 4;
+            label7.Text = "Book ID :";
+            // 
+            // LabelMemberID
+            // 
+            LabelMemberID.AutoSize = true;
+            LabelMemberID.Location = new Point(128, 65);
+            LabelMemberID.Name = "LabelMemberID";
+            LabelMemberID.Size = new Size(85, 15);
+            LabelMemberID.TabIndex = 3;
+            LabelMemberID.Text = "No Member ID";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(35, 65);
+            label5.Name = "label5";
+            label5.Size = new Size(75, 15);
+            label5.TabIndex = 2;
+            label5.Text = "Member ID : ";
+            // 
+            // LabelLoanID
+            // 
+            LabelLoanID.AutoSize = true;
+            LabelLoanID.Location = new Point(128, 41);
+            LabelLoanID.Name = "LabelLoanID";
+            LabelLoanID.Size = new Size(99, 15);
+            LabelLoanID.TabIndex = 1;
+            LabelLoanID.Text = "No Loan Selected";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(35, 41);
+            label1.Name = "label1";
+            label1.Size = new Size(53, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Loan ID :";
+            // 
+            // grbSelectLoan
+            // 
+            grbSelectLoan.Controls.Add(grdLoans);
+            grbSelectLoan.Location = new Point(451, 299);
+            grbSelectLoan.Name = "grbSelectLoan";
+            grbSelectLoan.Size = new Size(563, 249);
+            grbSelectLoan.TabIndex = 25;
+            grbSelectLoan.TabStop = false;
+            grbSelectLoan.Text = "Select Loan";
+            // 
+            // grbSelectMember
+            // 
+            grbSelectMember.Controls.Add(grdMembers);
+            grbSelectMember.Location = new Point(451, 46);
+            grbSelectMember.Name = "grbSelectMember";
+            grbSelectMember.Size = new Size(563, 247);
+            grbSelectMember.TabIndex = 26;
+            grbSelectMember.TabStop = false;
+            grbSelectMember.Text = "Select Member";
             // 
             // FormReturnBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1027, 567);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(1032, 567);
+            Controls.Add(grbSelectMember);
+            Controls.Add(grbSelectLoan);
             Controls.Add(grbLoanDetails);
-            Controls.Add(grdMembers);
             Controls.Add(grpMemberName);
             Controls.Add(grpMemberID);
             Controls.Add(OPName);
@@ -346,6 +360,7 @@
             Controls.Add(label4);
             Name = "FormReturnBook";
             Text = "FormReturnBook";
+            Load += FormReturnBook_Load;
             ((System.ComponentModel.ISupportInitialize)grdMembers).EndInit();
             grpMemberName.ResumeLayout(false);
             grpMemberName.PerformLayout();
@@ -354,7 +369,8 @@
             ((System.ComponentModel.ISupportInitialize)grdLoans).EndInit();
             grbLoanDetails.ResumeLayout(false);
             grbLoanDetails.PerformLayout();
-            groupBox1.ResumeLayout(false);
+            grbSelectLoan.ResumeLayout(false);
+            grbSelectMember.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -388,6 +404,7 @@
         private Label label6;
         private Button ReturnLoanBt;
         private DateTimePicker dateTimePicker1;
-        private GroupBox groupBox1;
+        private GroupBox grbSelectLoan;
+        private GroupBox grbSelectMember;
     }
 }
