@@ -73,7 +73,7 @@ namespace LibraraySystem
 
         public static int NumOfLoans(int memid)
         {
-            string sql = "SELECT COUNT(*) FROM LOANS WHERE MEMID = :id";
+            string sql = "SELECT COUNT(*) FROM LOANS WHERE MEMID = :id AND RETURNEDDATE IS NULL";
 
             OracleParameter[] parameters = {
                 new OracleParameter(":id",memid)

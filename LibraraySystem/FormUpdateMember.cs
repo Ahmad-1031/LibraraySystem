@@ -67,6 +67,8 @@ namespace LibraraySystem
             if (grdMembers.Rows.Count == 1)
             {
                 MessageBox.Show("No Member Found!");
+                grdMembers.DataSource = null;
+                grdMembers.Visible = false;
                 TboxNameS.Focus();
                 return;
             }
@@ -91,7 +93,8 @@ namespace LibraraySystem
             if (grdMembers.Rows.Count == 1)
             {
                 MessageBox.Show("No Member Found!");
-                grdMembers = null;
+                grdMembers.DataSource = null;
+                grdMembers.Visible = false;
                 TboxNameS.Focus();
                 return;
             }

@@ -28,10 +28,13 @@ namespace LibraraySystem
 
         private void SearchBt_Click(object sender, EventArgs e)
         {
+            grdBooks.DataSource = null;
             grdBooks.DataSource = Book.FindBooks(TBoxSearchB.Text).Tables[0];
             if (grdBooks.Rows.Count == 1)
             {
                 MessageBox.Show("No Data Found!");
+                grdBooks.DataSource = null;
+                grdBooks.Visible = false;
                 TBoxSearchB.Focus();
                 return;
             }

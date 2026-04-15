@@ -52,10 +52,13 @@ namespace LibraraySystem
 
         private void SearchBt_Click(object sender, EventArgs e)
         {
+            grdBooks.DataSource = null;
             grdBooks.DataSource = Book.FindBooksForLoan(TBoxSearchB.Text).Tables[0];
             if (grdBooks.Rows.Count == 1)
             {
                 MessageBox.Show("No Data Found!");
+                grdBooks.DataSource = null;
+                grdBooks.Visible = false;
                 TBoxSearchB.Focus();
                 return;
             }
@@ -83,6 +86,8 @@ namespace LibraraySystem
             if (grdMembers.Rows.Count == 1)
             {
                 MessageBox.Show("No Member Found!");
+                grdMembers.DataSource = null;
+                grdMembers.Visible = false;
                 TboxNameS.Focus();
                 return;
             }
@@ -105,7 +110,8 @@ namespace LibraraySystem
             if (grdMembers.Rows.Count == 1)
             {
                 MessageBox.Show("No Member Found!");
-                grdMembers = null;
+                grdMembers.DataSource = null;
+                grdMembers.Visible = false;
                 TboxNameS.Focus();
                 return;
             }
@@ -174,7 +180,7 @@ namespace LibraraySystem
                 return;
             }
 
-            if(Loan.NumOfLoans(int.Parse(memberid.Substring(3))) > 5)
+            if(Loan.NumOfLoans(int.Parse(memberid.Substring(3))) > 4)
             {
                 MessageBox.Show("Member cannot have more than 5 Loans", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

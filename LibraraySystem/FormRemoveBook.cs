@@ -28,10 +28,13 @@ namespace LibraraySystem
 
         private void SearchBt_Click(object sender, EventArgs e)
         {
+            grdBooks.DataSource = null;
             grdBooks.DataSource = Book.FindBooks(TBoxSearchB.Text).Tables[0];
-            if (grdBooks.Rows.Count == 0)
+            if (grdBooks.Rows.Count == 1)
             {
                 MessageBox.Show("No Data Found!");
+                grdBooks.DataSource = null;
+                grdBooks.Visible = false;
                 TBoxSearchB.Focus();
                 return;
             }
@@ -91,12 +94,12 @@ namespace LibraraySystem
                     MessageBox.Show("Cannot Remove Loaned Book", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else
-                {
-                    book.RemoveBook();
-                    MessageBox.Show("Book removed successfully", "Remove Book");
-                    ResetUI();
-                }
+
+
+                  book.RemoveBook();
+                  MessageBox.Show("Book removed successfully", "Remove Book");
+                  ResetUI();
+                
                
             }
         }
