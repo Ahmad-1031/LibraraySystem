@@ -42,6 +42,7 @@
             ReturnLoanBt.TabIndex = 10;
             ReturnLoanBt.Text = "Return Loan";
             ReturnLoanBt.UseVisualStyleBackColor = true;
+            ReturnLoanBt.Click += ReturnLoanBt_Click;
             // 
             // LoanBookBT
             // 

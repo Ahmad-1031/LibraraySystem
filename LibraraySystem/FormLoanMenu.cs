@@ -22,5 +22,11 @@ namespace LibraraySystem
             FormLoanBook formLoanBook = new FormLoanBook();
             formLoanBook.ShowDialog();
         }
+
+        private void ReturnLoanBt_Click(object sender, EventArgs e)
+        {
+            FormReturnBook formReturnBook = new FormReturnBook();
+            formReturnBook.ShowDialog();
+        }
     }
 }

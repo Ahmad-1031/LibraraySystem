@@ -88,7 +88,7 @@
             // grdBooks
             // 
             grdBooks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdBooks.Location = new Point(12, 240);
+            grdBooks.Location = new Point(12, 134);
             grdBooks.Name = "grdBooks";
             grdBooks.Size = new Size(613, 196);
             grdBooks.TabIndex = 7;
@@ -98,7 +98,7 @@
             // 
             SearchBt.BackColor = Color.Green;
             SearchBt.ForeColor = SystemColors.ControlLight;
-            SearchBt.Location = new Point(420, 185);
+            SearchBt.Location = new Point(420, 79);
             SearchBt.Name = "SearchBt";
             SearchBt.Size = new Size(119, 24);
             SearchBt.TabIndex = 6;
@@ -108,7 +108,7 @@
             // 
             // TBoxSearchB
             // 
-            TBoxSearchB.Location = new Point(66, 187);
+            TBoxSearchB.Location = new Point(66, 81);
             TBoxSearchB.Name = "TBoxSearchB";
             TBoxSearchB.Size = new Size(348, 23);
             TBoxSearchB.TabIndex = 4;
@@ -116,7 +116,7 @@
             // grdMembers
             // 
             grdMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdMembers.Location = new Point(664, 240);
+            grdMembers.Location = new Point(557, 382);
             grdMembers.Name = "grdMembers";
             grdMembers.Size = new Size(558, 196);
             grdMembers.TabIndex = 16;
@@ -127,7 +127,7 @@
             grpMemberName.Controls.Add(SearchNameBt);
             grpMemberName.Controls.Add(TboxNameS);
             grpMemberName.Controls.Add(label3);
-            grpMemberName.Location = new Point(735, 160);
+            grpMemberName.Location = new Point(50, 504);
             grpMemberName.Name = "grpMemberName";
             grpMemberName.Size = new Size(431, 74);
             grpMemberName.TabIndex = 15;
@@ -165,7 +165,7 @@
             grpMemberID.Controls.Add(SearchMemberIDBt);
             grpMemberID.Controls.Add(TboxMemberIDS);
             grpMemberID.Controls.Add(label2);
-            grpMemberID.Location = new Point(735, 80);
+            grpMemberID.Location = new Point(50, 424);
             grpMemberID.Name = "grpMemberID";
             grpMemberID.Size = new Size(431, 74);
             grpMemberID.TabIndex = 14;
@@ -201,7 +201,7 @@
             // OPName
             // 
             OPName.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            OPName.Location = new Point(944, 46);
+            OPName.Location = new Point(259, 390);
             OPName.Name = "OPName";
             OPName.Size = new Size(93, 28);
             OPName.TabIndex = 13;
@@ -212,7 +212,7 @@
             // OPMemID
             // 
             OPMemID.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            OPMemID.Location = new Point(845, 46);
+            OPMemID.Location = new Point(160, 390);
             OPMemID.Name = "OPMemID";
             OPMemID.Size = new Size(93, 28);
             OPMemID.TabIndex = 12;
@@ -224,7 +224,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(861, 9);
+            label4.Location = new Point(176, 353);
             label4.Name = "label4";
             label4.Size = new Size(177, 24);
             label4.TabIndex = 11;
@@ -234,7 +234,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(162, 108);
+            label1.Location = new Point(148, 40);
             label1.Name = "label1";
             label1.Size = new Size(205, 24);
             label1.TabIndex = 17;
@@ -250,7 +250,7 @@
             grbMemberDetails.Controls.Add(label6);
             grbMemberDetails.Controls.Add(label7);
             grbMemberDetails.Controls.Add(label8);
-            grbMemberDetails.Location = new Point(746, 453);
+            grbMemberDetails.Location = new Point(97, 622);
             grbMemberDetails.Name = "grbMemberDetails";
             grbMemberDetails.Size = new Size(392, 175);
             grbMemberDetails.TabIndex = 18;
@@ -339,7 +339,7 @@
             grpBookDetails.Controls.Add(label10);
             grpBookDetails.Controls.Add(label11);
             grpBookDetails.Controls.Add(label12);
-            grpBookDetails.Location = new Point(122, 453);
+            grpBookDetails.Location = new Point(698, 81);
             grpBookDetails.Name = "grpBookDetails";
             grpBookDetails.Size = new Size(417, 254);
             grpBookDetails.TabIndex = 19;
@@ -434,7 +434,7 @@
             grpLoanDetails.Controls.Add(label14);
             grpLoanDetails.Controls.Add(LabelLoanID);
             grpLoanDetails.Controls.Add(label13);
-            grpLoanDetails.Location = new Point(420, 713);
+            grpLoanDetails.Location = new Point(635, 622);
             grpLoanDetails.Name = "grpLoanDetails";
             grpLoanDetails.Size = new Size(432, 254);
             grpLoanDetails.TabIndex = 20;
@@ -557,7 +557,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1251, 974);
+            ClientSize = new Size(1126, 902);
             Controls.Add(grpLoanDetails);
             Controls.Add(grpBookDetails);
             Controls.Add(grbMemberDetails);
