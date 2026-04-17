@@ -114,6 +114,7 @@
             // 
             // CBgenre
             // 
+            CBgenre.DropDownStyle = ComboBoxStyle.DropDownList;
             CBgenre.FormattingEnabled = true;
             CBgenre.Location = new Point(180, 172);
             CBgenre.Name = "CBgenre";

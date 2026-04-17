@@ -251,5 +251,30 @@ namespace LibraraySystem
 
             return true;
         }
+
+        public static bool ValidateReturnLoan(string loanid, string startdate, string duedate, DateTime returndate) {
+
+            if (string.IsNullOrWhiteSpace(loanid) || loanid == "No Loan Selected") {
+                MessageBox.Show("No Loan Selected! - Please Select Loan","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                DateTime TstartDate = DateTime.Parse(startdate);
+                DateTime TdueDate = DateTime.Parse(duedate);
+
+                if (returndate.Date < TstartDate.Date) {
+                    MessageBox.Show("Return Date cannot be before loan start date!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (returndate.Date > DateTime.Today) {
+                    MessageBox.Show("Return Date Cannot be in the future!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+                return true;
+        }
     }
 }

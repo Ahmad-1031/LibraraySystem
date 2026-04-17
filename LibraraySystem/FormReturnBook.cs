@@ -97,8 +97,17 @@ namespace LibraraySystem
 
         private void grdMembers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int MemberID = Convert.ToInt32(grdMembers.Rows[grdMembers.CurrentCell.RowIndex].Cells[0].Value);
 
+            object value = grdMembers.Rows[grdMembers.CurrentCell.RowIndex].Cells[0].Value;
+
+            if(value == null || value == DBNull.Value)
+            {
+                MessageBox.Show("No Member Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int MemberID = Convert.ToInt32(grdMembers.Rows[grdMembers.CurrentCell.RowIndex].Cells[0].Value);
+            
 
             grdLoans.DataSource = null;
             grdLoans.DataSource = Loan.FindAllLoan(MemberID).Tables[0];
@@ -117,6 +126,14 @@ namespace LibraraySystem
 
         private void grdLoans_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            object value = grdLoans.Rows[grdLoans.CurrentCell.RowIndex].Cells[0].Value;
+
+            if (value == null || value == DBNull.Value)
+            {
+                MessageBox.Show("No Loan Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int LoanID = Convert.ToInt32(grdLoans.Rows[grdLoans.CurrentCell.RowIndex].Cells[0].Value);
 
 
@@ -127,6 +144,37 @@ namespace LibraraySystem
             LabelBookID.Text = updateLoan.BookID.ToString();
             LabelStartDate.Text = updateLoan.StartDate.ToString();
             LabelDueDate.Text = updateLoan.DueDate.ToString();
+        }
+
+        private void ReturnLoanBt_Click(object sender, EventArgs e)
+        {
+            string LoanID = LabelLoanID.Text;
+            string MemberID = LabelMemberID.Text;
+            string BookID = LabelBookID.Text;
+            string startDate = LabelStartDate.Text;
+            string dueDate = LabelDueDate.Text;
+            DateTime returnDate = DTPReturnDate.Value;
+
+            if (!Validation.ValidateReturnLoan(LoanID, startDate, dueDate, returnDate))
+            {
+                return;
+            }
+
+            int IntLoanID = int.Parse(LoanID);
+            int IntMemberID = int.Parse(MemberID);
+            int IntBookID = int.Parse(BookID);
+
+            DateTime DstartDate = DateTime.Parse(startDate);
+            DateTime DdueDate = DateTime.Parse(dueDate);
+
+            updateLoan = Loan.GetLoan(IntLoanID);
+            updateLoan.ReturnedDate = returnDate.Date;
+            updateLoan.ReturnLoan();
+            
+            
+
+            MessageBox.Show("Loan Returned!","Loan Return",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
         }
     }
 }

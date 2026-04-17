@@ -43,7 +43,7 @@
             grdLoans = new DataGridView();
             grbLoanDetails = new GroupBox();
             ReturnLoanBt = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            DTPReturnDate = new DateTimePicker();
             label11 = new Label();
             LabelDueDate = new Label();
             label9 = new Label();
@@ -195,7 +195,7 @@
             // grbLoanDetails
             // 
             grbLoanDetails.Controls.Add(ReturnLoanBt);
-            grbLoanDetails.Controls.Add(dateTimePicker1);
+            grbLoanDetails.Controls.Add(DTPReturnDate);
             grbLoanDetails.Controls.Add(label11);
             grbLoanDetails.Controls.Add(LabelDueDate);
             grbLoanDetails.Controls.Add(label9);
@@ -222,13 +222,14 @@
             ReturnLoanBt.TabIndex = 12;
             ReturnLoanBt.Text = "Return Loan";
             ReturnLoanBt.UseVisualStyleBackColor = true;
+            ReturnLoanBt.Click += ReturnLoanBt_Click;
             // 
-            // dateTimePicker1
+            // DTPReturnDate
             // 
-            dateTimePicker1.Location = new Point(128, 164);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(205, 23);
-            dateTimePicker1.TabIndex = 11;
+            DTPReturnDate.Location = new Point(128, 164);
+            DTPReturnDate.Name = "DTPReturnDate";
+            DTPReturnDate.Size = new Size(205, 23);
+            DTPReturnDate.TabIndex = 11;
             // 
             // label11
             // 
@@ -407,7 +408,7 @@
         private Label LabelStartDate;
         private Label label6;
         private Button ReturnLoanBt;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker DTPReturnDate;
         private GroupBox grbSelectLoan;
         private GroupBox grbSelectMember;
     }

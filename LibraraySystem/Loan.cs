@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.VoiceCommands;
 
 namespace LibraraySystem
 {
@@ -35,7 +36,7 @@ namespace LibraraySystem
             BookID = bookID;
             StartDate = startDate;
             DueDate = dueDate;
-            ReturnedDate = null;
+
         }
 
         public override string ToString()
@@ -103,15 +104,14 @@ namespace LibraraySystem
             Database.ExecuteNonQuery(BookStatus, parameters2);
 
             //Adding Loan to DB
-            string sql = "INSERT INTO LOANS (LOANID, MEMID, BOOKID, STARTDATE, DUEDATE, RETURNEDDATE)" +
-                "VALUES (:loanid, :memid, :bookid, :startdate, :duedate, :returneddate)";
+            string sql = "INSERT INTO LOANS (LOANID, MEMID, BOOKID, STARTDATE, DUEDATE)" +
+                "VALUES (:loanid, :memid, :bookid, :startdate, :duedate)";
             OracleParameter[] parameters = {
                 new OracleParameter(":loanid",LoanID),
                 new OracleParameter(":memid",MemID),
                 new OracleParameter(":bookid",BookID),
                 new OracleParameter(":startdate",StartDate.Date),
                 new OracleParameter(":duedate",DueDate.Date),
-                new OracleParameter(":returneddate",ReturnedDate)
 
             };
 
@@ -121,10 +121,26 @@ namespace LibraraySystem
 
         }
 
+        public void ReturnLoan()
+        {
+
+            string sql = "UPDATE LOANS SET " +
+                        "RETURNEDDATE = :rdate " +
+                        "WHERE LOANID = :id";
+            OracleParameter[] parameters = {
+                new OracleParameter(":rdate",ReturnedDate),
+                new OracleParameter(":id", LoanID)
+            };
+
+            Database.ExecuteNonQuery(sql, parameters);
+
+        }
+
+
 
         public static DataSet FindAllLoan(int id)
         {
-            string sql = "SELECT * FROM LOANS WHERE MEMID = :id";
+            string sql = "SELECT * FROM LOANS WHERE MEMID = :id AND RETURNEDDATE IS NULL";
 
             OracleParameter[] parameters = {
                 new OracleParameter(":id",id)
