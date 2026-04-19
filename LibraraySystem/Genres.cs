@@ -22,5 +22,18 @@ namespace LibraraySystem
 
             return Database.ExecuteMultiRowQuery(sqlQuery);
         }
+
+        public static DataSet popularGenres()
+        {
+
+            string sqlQuery = "SELECT g.GenreCode, g.GenreDesc, COUNT(*) AS TOTAL " +
+                "FROM LOANS l " +
+                "JOIN BOOKS b ON l.BOOKID = b.BOOKID " +
+                "JOIN GENRES g ON b.GenreCode = g.GenreCode " +
+                "GROUP BY g.GenreCode, g.GenreDesc " +
+                "ORDER BY g.GenreCode";
+
+            return Database.ExecuteMultiRowQuery(sqlQuery);
+        }
     }
 }

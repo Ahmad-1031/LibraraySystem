@@ -48,22 +48,22 @@
             // booksToolStripMenuItem
             // 
             booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            booksToolStripMenuItem.Size = new Size(51, 20);
-            booksToolStripMenuItem.Text = "Books";
+            booksToolStripMenuItem.Size = new Size(97, 20);
+            booksToolStripMenuItem.Text = "Manage Books";
             booksToolStripMenuItem.Click += booksToolStripMenuItem_Click;
             // 
             // membersToolStripMenuItem
             // 
             membersToolStripMenuItem.Name = "membersToolStripMenuItem";
-            membersToolStripMenuItem.Size = new Size(69, 20);
-            membersToolStripMenuItem.Text = "Members";
+            membersToolStripMenuItem.Size = new Size(115, 20);
+            membersToolStripMenuItem.Text = "Manage Members";
             membersToolStripMenuItem.Click += membersToolStripMenuItem_Click;
             // 
             // loanToolStripMenuItem
             // 
             loanToolStripMenuItem.Name = "loanToolStripMenuItem";
-            loanToolStripMenuItem.Size = new Size(45, 20);
-            loanToolStripMenuItem.Text = "Loan";
+            loanToolStripMenuItem.Size = new Size(96, 20);
+            loanToolStripMenuItem.Text = "Manage Loans";
             loanToolStripMenuItem.Click += loanToolStripMenuItem_Click;
             // 
             // adminToolStripMenuItem
@@ -71,6 +71,7 @@
             adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             adminToolStripMenuItem.Size = new Size(55, 20);
             adminToolStripMenuItem.Text = "Admin";
+            adminToolStripMenuItem.Click += adminToolStripMenuItem_Click;
             // 
             // Main
             // 

@@ -29,5 +29,11 @@ namespace LibraraySystem
             FormLoanMenu formLoanMenu = new FormLoanMenu();
             formLoanMenu.ShowDialog();
         }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           FormAdminMenu formAdminMenu = new FormAdminMenu();
+            formAdminMenu.ShowDialog();
+        }
     }
 }

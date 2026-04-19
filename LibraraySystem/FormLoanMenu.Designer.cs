@@ -31,12 +31,13 @@
             ReturnLoanBt = new Button();
             LoanBookBT = new Button();
             label1 = new Label();
+            PayFineBt = new Button();
             SuspendLayout();
             // 
             // ReturnLoanBt
             // 
             ReturnLoanBt.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ReturnLoanBt.Location = new Point(228, 104);
+            ReturnLoanBt.Location = new Point(177, 100);
             ReturnLoanBt.Name = "ReturnLoanBt";
             ReturnLoanBt.Size = new Size(93, 28);
             ReturnLoanBt.TabIndex = 10;
@@ -47,7 +48,7 @@
             // LoanBookBT
             // 
             LoanBookBT.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LoanBookBT.Location = new Point(129, 104);
+            LoanBookBT.Location = new Point(78, 100);
             LoanBookBT.Name = "LoanBookBT";
             LoanBookBT.Size = new Size(93, 28);
             LoanBookBT.TabIndex = 9;
@@ -65,11 +66,22 @@
             label1.TabIndex = 8;
             label1.Text = "Pick An Option";
             // 
+            // PayFineBt
+            // 
+            PayFineBt.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PayFineBt.Location = new Point(276, 100);
+            PayFineBt.Name = "PayFineBt";
+            PayFineBt.Size = new Size(93, 28);
+            PayFineBt.TabIndex = 11;
+            PayFineBt.Text = "Pay Fine";
+            PayFineBt.UseVisualStyleBackColor = true;
+            // 
             // FormLoanMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 185);
+            Controls.Add(PayFineBt);
             Controls.Add(ReturnLoanBt);
             Controls.Add(LoanBookBT);
             Controls.Add(label1);
@@ -84,5 +96,6 @@
         private Button ReturnLoanBt;
         private Button LoanBookBT;
         private Label label1;
+        private Button PayFineBt;
     }
 }
