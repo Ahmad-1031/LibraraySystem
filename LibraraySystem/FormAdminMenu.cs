@@ -22,5 +22,11 @@ namespace LibraraySystem
             FormPopularGenres formPopularGenres = new FormPopularGenres();
             formPopularGenres.ShowDialog();
         }
+
+        private void MonthlyFinesBt_Click(object sender, EventArgs e)
+        {
+            FormMonthlyFines formMonthlyFines = new FormMonthlyFines();
+            formMonthlyFines.ShowDialog();
+        }
     }
 }

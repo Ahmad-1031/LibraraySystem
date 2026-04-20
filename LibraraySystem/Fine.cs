@@ -1,6 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +74,22 @@ namespace LibraraySystem
             };
 
             Database.ExecuteNonQuery(sql, parameters);
+        }
+
+        public static DataSet FindAllFinesByYear(int year)
+        {
+            string sql = "SELECT AMOUNT,FINEDATE " +
+                         "FROM FINES " +
+                        "WHERE FINEDATE >= :startdate " +
+                        "AND FINEDATE < :enddate";
+
+            OracleParameter[] parameters =
+            {
+                new OracleParameter("startdate",new DateTime(year,1,1)),
+                new OracleParameter("enddate",new DateTime(year + 1,1,1))
+            };
+            
+            return Database.ExecuteMultiRowQuery(sql, parameters);
         }
     }
 }

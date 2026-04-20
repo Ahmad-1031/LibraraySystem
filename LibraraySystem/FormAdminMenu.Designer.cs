@@ -42,6 +42,7 @@
             MonthlyFinesBt.TabIndex = 10;
             MonthlyFinesBt.Text = "Monthly Fines";
             MonthlyFinesBt.UseVisualStyleBackColor = true;
+            MonthlyFinesBt.Click += MonthlyFinesBt_Click;
             // 
             // PopularGenresBt
             // 
