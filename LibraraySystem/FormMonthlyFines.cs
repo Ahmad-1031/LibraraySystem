@@ -25,6 +25,8 @@ namespace LibraraySystem
     public partial class FormMonthlyFines : Form
     {
 
+        //https://github.com/Live-Charts/LiveCharts2/blob/master/samples/WinFormsSample/Bars/Basic/View.cs
+
         private readonly CartesianChart cartesianChart;
         public FormMonthlyFines()
         {
@@ -34,41 +36,7 @@ namespace LibraraySystem
         private void FormMonthlyFines_Load(object sender, EventArgs e)
         {
 
-            /*var values = new double[] { 2,7,4,9,1,5,1,10,12,26,40,12 };
-
-            var labels = new string[] { 
-                "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-
-            var series = new ISeries[]
-            {
-            new ColumnSeries<double> { Name = "Monthly Fines", Values = values },
-
-            };
-
-            var xAxis = new Axis
-            {
-                Labels = labels,
-                LabelsRotation = 0,
-                SeparatorsPaint = new LiveChartsCore.SkiaSharpView.Painting.SolidColorPaint(new SKColor(200, 200, 200)),
-                SeparatorsAtCenter = false,
-                TicksPaint = new LiveChartsCore.SkiaSharpView.Painting.SolidColorPaint(new SKColor(35, 35, 35)),
-                TicksAtCenter = true,
-                MinStep = 1,
-                ForceStepToMin = true
-            };
-
-            var cartesianChart = new CartesianChart
-            {
-                Series = series,
-                XAxes = [xAxis],
-                LegendPosition = LiveChartsCore.Measure.LegendPosition.Right,
-                Location = new System.Drawing.Point(0, 0),
-                Dock = DockStyle.Fill
-
-
-            };
-
-            Controls.Add(cartesianChart);*/
+           
         }
 
         private void ShowBT_Click(object sender, EventArgs e)

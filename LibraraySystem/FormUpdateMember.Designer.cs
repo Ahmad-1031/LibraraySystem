@@ -264,6 +264,7 @@
             grdMembers.Size = new Size(593, 196);
             grdMembers.TabIndex = 10;
             grdMembers.CellClick += grdMembers_CellClick;
+            grdMembers.CellContentClick += grdMembers_CellContentClick;
             // 
             // FormUpdateMember
             // 

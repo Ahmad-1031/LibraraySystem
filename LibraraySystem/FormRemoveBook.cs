@@ -44,6 +44,15 @@ namespace LibraraySystem
 
         private void grdBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            object value = grdBooks.Rows[grdBooks.CurrentCell.RowIndex].Cells[0].Value;
+
+            if (value == null || value == DBNull.Value)
+            {
+                MessageBox.Show("No Book Selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int BookID = Convert.ToInt32(grdBooks.Rows[grdBooks.CurrentCell.RowIndex].Cells[0].Value);
 
             book = Book.GetBook(BookID);

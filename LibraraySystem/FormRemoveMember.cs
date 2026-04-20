@@ -94,6 +94,14 @@ namespace LibraraySystem
 
         private void grdMembers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            object value = grdMembers.Rows[grdMembers.CurrentCell.RowIndex].Cells[0].Value;
+
+            if (value == null || value == DBNull.Value)
+            {
+                MessageBox.Show("No Member Selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int MemID = Convert.ToInt32(grdMembers.Rows[grdMembers.CurrentCell.RowIndex].Cells[0].Value);
 
             DeleteMember = Member.GetMember(MemID);

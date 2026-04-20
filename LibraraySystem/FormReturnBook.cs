@@ -102,7 +102,7 @@ namespace LibraraySystem
 
             if(value == null || value == DBNull.Value)
             {
-                MessageBox.Show("No Member Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Member Selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
