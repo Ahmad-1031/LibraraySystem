@@ -169,6 +169,14 @@ namespace LibraraySystem
 
             updateLoan = Loan.GetLoan(IntLoanID);
             updateLoan.ReturnedDate = returnDate.Date;
+
+            if (updateLoan.ReturnedDate > updateLoan.DueDate) {
+
+                Fine fine = new Fine(IntLoanID, 10.00, DateTime.Now.Date);
+                MessageBox.Show($"Over Due Loan - Fine Amount €10\n\n{fine.ToString()}","Over Due Loan",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fine.AddFine();
+            }
+
             updateLoan.ReturnLoan();
             
             

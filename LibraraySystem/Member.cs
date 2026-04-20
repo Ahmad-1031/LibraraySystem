@@ -18,6 +18,8 @@ namespace LibraraySystem
         public string Email {  get; set; }
         public Char IsDeleted {  get; set; }
 
+        
+
         public Member(int id, String fname, String sname, string phone, String email)
         {
             MemID = id;

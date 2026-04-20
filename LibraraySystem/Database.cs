@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace LibraraySystem
 {
+
+    //How to Prevent Sql Injection - Used Throughout Project "https://www.acunetix.com/blog/web-security-zone/how-to-prevent-sql-injection-in-csharp/"
+
     class Database
     {
         public const string connectionString = "Data Source = localhost/orcl; User Id = C##User1; Password = Oracle12345;";
