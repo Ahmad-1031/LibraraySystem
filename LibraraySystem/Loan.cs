@@ -124,6 +124,15 @@ namespace LibraraySystem
         public void ReturnLoan()
         {
 
+            string BookStatus = "UPDATE BOOKS SET STATUS = 'A' WHERE BOOKID = :bookid";
+
+            OracleParameter[] parameters2 =
+            {
+                new OracleParameter(":bookid",BookID)
+            };
+
+            Database.ExecuteNonQuery(BookStatus, parameters2);
+
             string sql = "UPDATE LOANS SET " +
                         "RETURNEDDATE = :rdate " +
                         "WHERE LOANID = :id";

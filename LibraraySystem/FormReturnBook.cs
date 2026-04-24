@@ -180,9 +180,33 @@ namespace LibraraySystem
             updateLoan.ReturnLoan();
             
             
-
+            ResetUI();
             MessageBox.Show("Loan Returned!","Loan Return",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             
+        }
+
+        public void ResetUI()
+        {
+
+            LabelLoanID.Text = "No Loan Selected";
+            LabelMemberID.Text = "No Member ID";
+            LabelBookID.Text = "No Book ID";
+            LabelStartDate.Text = "No Start Date";
+            LabelDueDate.Text = "No Due Date";
+            DTPReturnDate.Value = DateTime.Now;
+
+            grbSelectLoan.Visible = false;
+            grdLoans.DataSource = null;
+
+            grbSelectMember.Visible = false;
+            grdMembers.DataSource = null;
+
+            grpMemberName.Visible = false;
+            TboxNameS.Text = String.Empty;
+
+            grpMemberID.Visible = false;
+            TboxMemberIDS.Text = String.Empty;
         }
     }
 }

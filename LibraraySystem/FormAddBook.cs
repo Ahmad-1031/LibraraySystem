@@ -97,10 +97,9 @@ namespace LibraraySystem
             
             Book b1 = new Book(Convert.ToInt32(TBoxBookID.Text),title.Trim(),author.Trim(),description.Trim(),selectedGenre);
             b1.AddBook();
-            MessageBox.Show("\n" + b1.ToString(), "Book Added Successfully");
+            MessageBox.Show("\n" + b1.ToString(), "Book Added Successfully",MessageBoxButtons.OK,MessageBoxIcon.Information);
             ResetUI();
 
-            MessageBox.Show(b1.ToString());
 
 
             

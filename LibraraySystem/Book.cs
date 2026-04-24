@@ -122,10 +122,10 @@ namespace LibraraySystem
         {
             string str = "Book Details: \n\n";
 
-            str += Title + "\n" +
-                    Author + "\n" +
-                    Description + "\n" +
-                    Genre + "\n";
+            str += $"Book Title: {Title}\n" +
+                    $"Author: {Author}\n" +
+                    $"Description: {Description}\n" +
+                    $"Genre: {Genre}\n";
             return str;
         }
 

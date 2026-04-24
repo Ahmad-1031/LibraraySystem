@@ -14,6 +14,7 @@ namespace LibraraySystem
     class Database
     {
         public const string connectionString = "Data Source = localhost/orcl; User Id = C##User1; Password = Oracle12345;";
+        //public const string connectionString = "Data Source = studentoracle:1521/orcl; User Id = T00269209; Password = c?3p76rrbnNv;";
 
         public static OracleConnection OpenConnection()
         {
